@@ -1,0 +1,396 @@
+PROJECT OBJECTIVE DOCUMENT
+BDP Fork — GG Blogging Engine
+Phase 1: 2-Hour Sprint  |  Phase 2: Full GG Integration
+
+Project Objectives
+Phase 1 — Unblock Design Work (Today, 2 Hours)
+Get category post filtering working on the existing BDP installation so page design work can proceed without interruption. No renaming, no refactoring, no GG hooks. Additive changes only.
+Phase 2 — GG Blogging Engine (Ongoing)
+Fork the plugin into a standalone GG ecosystem module with extended layouts, custom post type support, a cleaner admin UI, and optional GG core registration. Developed incrementally alongside other ecosystem work.
+
+PHASE 1 — Category Filter Sprint
+Objective
+Add Ajax-powered category filter buttons to [bdp_post] (grid layout). When a user clicks a category button, the post grid reloads without a page refresh showing only posts from that category. All existing shortcode params remain unchanged. This directly unblocks the page layout work.
+Task Breakdown
+
+#
+Task
+Est. Time
+Priority
+Implementation Notes
+1
+Add filter_cats param to bdp_post shortcode_atts()
+10 min
+HIGH
+Add 'filter_cats' => '' to the shortcode_atts array in includes/shortcodes/bdp-post.php. This is the comma-separated list of category IDs/slugs to show as filter buttons.
+2
+Add show_filter param (toggle filter UI on/off)
+5 min
+HIGH
+Add 'show_filter' => 'false' to shortcode_atts. Default false = backward compatible. Set to 'true' to enable.
+3
+Add Ajax action for category filter
+20 min
+HIGH
+In includes/bdp-ajax-functions.php, add new action: wp_ajax_bdp_filter_posts / wp_ajax_nopriv_bdp_filter_posts. Handler reads category slug from POST, builds WP_Query, includes grid template, returns JSON with HTML.
+4
+Render filter buttons in bdp-post shortcode
+20 min
+HIGH
+Before the grid output in bdp-post.php, if show_filter=true, loop filter_cats, call get_term() for each, render button HTML with data-cat and data-conf attributes.
+5
+Write filter JS handler in bdp-public.js
+30 min
+HIGH
+On .bdp-filter-btn click: set active state, read data-cat and data-conf, POST to ajaxurl (action: bdp_filter_posts), on success replace .bdp-post-grid-main innerHTML with result.data.html.
+6
+Add nonce to wp_localize_script
+5 min
+HIGH
+In class-bdp-script.php, add 'filter_nonce' => wp_create_nonce('bdp_filter_nonce') to the Wpbdp localization array.
+7
+Add filter button CSS
+20 min
+HIGH
+Append to assets/css/bdp-public.css: .bdp-filter-bar styles (flex, gap, margin), .bdp-filter-btn (button reset, padding, border, cursor), .bdp-filter-btn.active (cerise background or NAVY), loading state opacity.
+8
+Test: All Posts button + category buttons
+10 min
+HIGH
+Add an 'All' button that passes empty string as category (shows all posts). Verify active state toggles correctly. Test with 2+ categories.
+
+Implementation — Step by Step
+Step 1: includes/shortcodes/bdp-post.php — Add params
+Locate the shortcode_atts() call (around line 24). Add two new entries:
+'show_filter'  => 'false',
+'filter_cats'  => '',
+Then in the variable extraction block below it, add:
+$show_filter  = ( $show_filter === 'true' ) ? 'true' : 'false';
+$filter_cats  = ! empty( $filter_cats ) ? array_map('trim', explode(',', $filter_cats)) : array();
+Step 2: Render filter buttons — still in bdp-post.php
+Immediately before the ob_start() call that begins the output buffer, insert:
+ob_start();
+if ( $show_filter === 'true' && ! empty( $filter_cats ) ) {
+    $conf = json_encode( array(
+        'design'       => $design,
+        'grid'         => $grid,
+        'media_size'   => $media_size,
+        'limit'        => $posts_per_page,
+        'words_limit'  => $words_limit,
+        'showAuthor'   => $showAuthor,
+        'showDate'     => $showDate,
+        'showCategory' => $showCategory,
+        'showContent'  => $showContent,
+        'show_tags'    => $show_tags,
+        'show_comments'=> $show_comments,
+        'showreadmore' => $showreadmore,
+        'order'        => $order,
+        'orderby'      => $orderby,
+    ) );
+    echo '<div class="bdp-filter-bar" data-conf='' . esc_attr( $conf ) . ''>';
+    echo '<button class="bdp-filter-btn active" data-cat="">All</button>';
+    foreach ( $filter_cats as $cat_ref ) {
+        $term = is_numeric($cat_ref) ? get_term( (int)$cat_ref, 'category' ) : get_term_by('slug', $cat_ref, 'category');
+        if ( $term && ! is_wp_error($term) ) {
+            echo '<button class="bdp-filter-btn" data-cat="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</button>';
+        }
+    }
+    echo '</div>';
+}
+Step 3: includes/bdp-ajax-functions.php — Ajax handler
+Inside the Wpbdp_Public class constructor, add:
+add_action( 'wp_ajax_bdp_filter_posts',        array($this, 'bdp_filter_posts') );
+add_action( 'wp_ajax_nopriv_bdp_filter_posts', array($this, 'bdp_filter_posts') );
+Then add the handler method:
+function bdp_filter_posts() {
+    check_ajax_referer( 'bdp_filter_nonce', 'nonce' );
+    global $post;
+    $atts     = ! empty( $_POST['conf'] ) ? $_POST['conf'] : array();
+    $cat_slug = sanitize_text_field( $_POST['cat'] ?? '' );
+
+    $design        = isset($atts['design']) ? sanitize_text_field($atts['design']) : 'design-1';
+    $grid          = isset($atts['grid']) ? intval($atts['grid']) : 2;
+    $posts_per_page= isset($atts['limit']) ? intval($atts['limit']) : 20;
+    $media_size    = isset($atts['media_size']) ? sanitize_text_field($atts['media_size']) : 'large';
+    $words_limit   = isset($atts['words_limit']) ? intval($atts['words_limit']) : 20;
+    $showAuthor    = isset($atts['showAuthor']) && $atts['showAuthor'] === 'false' ? 'false' : 'true';
+    $showDate      = isset($atts['showDate']) && $atts['showDate'] === 'false' ? 'false' : 'true';
+    $showCategory  = isset($atts['showCategory']) && $atts['showCategory'] === 'false' ? 'false' : 'true';
+    $showContent   = isset($atts['showContent']) && $atts['showContent'] === 'true' ? 'true' : 'false';
+    $show_tags     = isset($atts['show_tags']) && $atts['show_tags'] === 'false' ? 'false' : 'true';
+    $show_comments = isset($atts['show_comments']) && $atts['show_comments'] === 'false' ? 'false' : 'true';
+    $showreadmore  = isset($atts['showreadmore']) && $atts['showreadmore'] === 'true' ? 'true' : 'false';
+    $order         = isset($atts['order']) && strtolower($atts['order']) === 'asc' ? 'ASC' : 'DESC';
+    $orderby       = isset($atts['orderby']) ? sanitize_text_field($atts['orderby']) : 'date';
+
+    $args = array(
+        'post_type'          => 'post',
+        'post_status'        => array('publish'),
+        'order'              => $order,
+        'orderby'            => $orderby,
+        'posts_per_page'     => $posts_per_page,
+        'ignore_sticky_posts'=> true,
+    );
+    if ( ! empty( $cat_slug ) ) {
+        $args['tax_query'] = array( array(
+            'taxonomy' => 'category',
+            'terms'    => $cat_slug,
+            'field'    => is_numeric($cat_slug) ? 'term_id' : 'slug',
+        ) );
+    }
+
+    $query = new WP_Query( $args );
+    $design_file = BDP_DIR . '/templates/grid/' . $design . '.php';
+    ob_start();
+    echo '<div class="bdp-post-grid-main bdp-' . esc_attr($design) . ' bdpgrid-' . esc_attr($grid) . ' bdp-clearfix">';
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $count = 0; $cat_links = array(); $css_class = '';
+            $post_featured_image = bdp_get_post_featured_image( $post->ID, $media_size );
+            $post_link = bdp_get_post_link( $post->ID );
+            $terms = get_the_terms( $post->ID, BDP_CAT );
+            $tags = get_the_tag_list(' ',', ');
+            $comments = get_comments_number( $post->ID );
+            $reply = ($comments <= 1) ? __('Reply', 'bdp') : __('Replies', 'bdp');
+            if( $terms ) { foreach($terms as $term) { $term_link = get_term_link($term); $cat_links[] = '<a href="'.esc_url($term_link).'">'.$term->name.'</a>'; } }
+            $cate_name = join(' ', $cat_links);
+            if ( file_exists($design_file) ) include( $design_file );
+        }
+    } else {
+        echo '<p class="bdp-no-posts">' . esc_html__('No posts found.', 'blog-designer-pack') . '</p>';
+    }
+    wp_reset_postdata();
+    echo '</div>';
+    $html = ob_get_clean();
+    wp_send_json_success( array( 'html' => $html ) );
+}
+Step 4: assets/js/bdp-public.js — Filter click handler
+At the top of the file, after the existing initialization calls, add:
+/* Category Filter */
+jQuery(document).on('click', '.bdp-filter-btn', function() {
+    var btn      = jQuery(this);
+    var bar      = btn.closest('.bdp-filter-bar');
+    var grid     = bar.next('.bdp-post-grid-main');
+    var cat      = btn.data('cat');
+    var conf     = bar.data('conf');
+
+    bar.find('.bdp-filter-btn').removeClass('active');
+    btn.addClass('active');
+    grid.css('opacity', '0.5');
+
+    jQuery.post( Wpbdp.ajaxurl, {
+        action : 'bdp_filter_posts',
+        nonce  : Wpbdp.filter_nonce,
+        cat    : cat,
+        conf   : conf
+    }, function(res) {
+        if ( res.success ) {
+            grid.replaceWith( res.data.html );
+        }
+        bar.next('.bdp-post-grid-main').css('opacity', '1');
+    });
+});
+Step 5: class-bdp-script.php — Add nonce
+In the wp_localize_script call for bdp-public-script, add one line:
+'filter_nonce' => wp_create_nonce( 'bdp_filter_nonce' ),
+Step 6: assets/css/bdp-public.css — Filter bar styles
+Append to the end of the file:
+/* BDP Category Filter Bar */
+.bdp-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.bdp-filter-btn { background: transparent; border: 2px solid #1B2A4A; color: #1B2A4A;
+    padding: 6px 18px; border-radius: 4px; cursor: pointer; font-size: 14px;
+    font-family: inherit; transition: all 0.2s ease; }
+.bdp-filter-btn:hover { background: #1B2A4A; color: #fff; }
+.bdp-filter-btn.active { background: #DE3163; border-color: #DE3163; color: #fff; }
+.bdp-post-grid-main { transition: opacity 0.2s ease; }
+.bdp-no-posts { padding: 24px; text-align: center; color: #666; }
+Shortcode Usage After Implementation
+Standard usage — no filter:
+[bdp_post limit="12" grid="3" design="design-1"]
+With category filter buttons:
+[bdp_post limit="12" grid="3" design="design-1" show_filter="true" filter_cats="travel,food,lifestyle"]
+Or by category ID:
+[bdp_post limit="12" grid="3" show_filter="true" filter_cats="4,7,12"]
+
+
+
+PHASE 2 — GG Blogging Engine Roadmap
+Overview
+Phase 2 converts the forked BDP into a first-class GG ecosystem module. Work is organized into tracks that can proceed in parallel or sequentially depending on capacity. Nothing in Phase 2 breaks what Phase 1 delivers.
+Track A — Unlock Existing Parameters (2-4 hours total)
+These features are structurally complete but locked behind hardcoded constants. Each is a one- to two-line change per shortcode file.
+
+#
+Task
+Est. Time
+Priority
+Implementation Notes
+A1
+Custom Post Type support
+30 min
+HIGH
+Add 'post_type' => 'post' to every shortcode's shortcode_atts(). Replace hardcoded BDP_POST_TYPE in WP_Query with the extracted variable. Users can now pass post_type="portfolio".
+A2
+Custom Taxonomy support
+30 min
+HIGH
+Add 'taxonomy' => 'category' and 'tag' => '' to shortcode_atts. Update tax_query to use the variable. Users can filter by any registered taxonomy.
+A3
+Link behaviour (new tab)
+15 min
+MED
+Add 'link_behaviour' => 'self' to shortcode_atts. In every template file, change the post link anchor to include target='_blank' when link_behaviour === 'new'.
+A4
+Custom read more text
+15 min
+LOW
+Add 'read_more_text' => 'Read More' to shortcode_atts. Update template files to echo $read_more_text instead of hardcoded string.
+A5
+CSS class passthrough
+10 min
+LOW
+Add 'css_class' => '' to shortcode_atts. Append to the wrapper div's class attribute.
+Track B — New Layouts & Designs (Ongoing, 2-8 hours each)
+Each new design is a self-contained PHP template file in templates/{layout}/. Register it by adding one entry to the relevant design registry function in bdp-functions.php. No other files change.
+#
+Task
+Est. Time
+Priority
+Implementation Notes
+B1
+Grid design-3 (card with overlay)
+3 hrs
+HIGH
+Dark image overlay with title/date on hover. Common magazine pattern. Template-only change.
+B2
+Grid design-4 (minimal, no image)
+2 hrs
+MED
+Text-only card. Title, excerpt, category, date. Useful for link-heavy content.
+B3
+Grid design-5 (horizontal card)
+3 hrs
+MED
+Side-by-side image and text. Better for longer excerpts. Responsive stack on mobile.
+B4
+Grid-box design-2 (unlock existing)
+1 hr
+LOW
+BDP Pro has this design but it's absent from free templates. Build a version from the existing design-1 base.
+B5
+Timeline layout (new shortcode)
+6 hrs
+LOW
+New gg_post_timeline shortcode. Vertical timeline with alternating left/right cards. New templates/timeline/ directory.
+B6
+Featured post hero layout
+4 hrs
+MED
+Large hero card (first post) followed by a smaller grid. Single template file, no new shortcode needed.
+Track C — Ajax Pagination (3-5 hours)
+Extend the existing Load More Ajax pattern to all layouts. The handler (bdp_get_more_post) already works for masonry. The same pattern needs wiring into grid, list, and carousel.
+#
+Task
+Est. Time
+Priority
+Implementation Notes
+C1
+Load More for Post Grid
+1 hr
+HIGH
+Render data-conf on the ajax-btn-wrap div. Add bdp-load-more-btn below grid. Reuse existing JS handler and PHP action.
+C2
+Load More for Post List
+1 hr
+MED
+Same pattern as C1. List template needs the wrapper class convention.
+C3
+Infinite Scroll (new)
+3 hrs
+LOW
+Intersection Observer on a sentinel div below the grid. Fires the same Ajax action on scroll. Page param increments automatically.
+Track D — GG Ecosystem Integration (2-3 hours)
+#
+Task
+Est. Time
+Priority
+Implementation Notes
+D1
+GG module registration hook
+30 min
+LOW
+Conditional gg_register_module() call on plugins_loaded. No-ops if GG core absent.
+D2
+Strip Freemius admin notices
+45 min
+MED
+Remove bdp_premium_admin_messages() action hook. Remove Freemius pricing page registration. Keep freemius/ directory inert.
+D3
+GG admin menu integration
+1 hr
+LOW
+Replace standalone BDP admin menu with GG submenu registration pattern if GG core is present. Fallback to standalone if not.
+D4
+CSS variable alignment
+1 hr
+LOW
+Replace hardcoded color values in bdp-public.css with CSS custom properties. Map to GG token names where applicable.
+D5
+Plugin rename & rebrand
+30 min
+LOW
+Update Plugin Name, Text Domain, constants prefix from BDP to GG_BDP or GGBL. Update all function name prefixes in a single search-replace pass.
+Track E — Admin & UX (4-6 hours)
+#
+Task
+Est. Time
+Priority
+Implementation Notes
+E1
+Shortcode generator: add filter params
+1 hr
+MED
+Add filter_cats and show_filter to shortcode-fields.php under the free params section. Remove 'Upgrade to pro' from social sharing field or hide it.
+E2
+Live preview in shortcode builder
+3 hrs
+LOW
+Iframe preview panel in the shortcode generator that re-renders on param change via Ajax.
+E3
+Settings page: default values
+2 hrs
+LOW
+WordPress Settings API page for plugin-wide defaults (default grid, default design, default limit). Reduces shortcode verbosity.
+
+Effort Summary
+
+Phase / Track
+Est. Hours
+Priority
+Blocks
+Phase 1 — Category Filter
+2 hrs
+IMMEDIATE
+Page design work
+Track A — Unlock Params
+1-2 hrs
+HIGH
+CPT support
+Track B — New Layouts
+2-8 hrs each
+MED
+Design expansion
+Track C — Ajax Pagination
+3-5 hrs
+MED
+UX improvement
+Track D — GG Integration
+2-3 hrs
+LOW
+Ecosystem novelty
+Track E — Admin UX
+4-6 hrs
+LOW
+DX improvement
+Implementation Rule: All changes are additive. Existing shortcodes, templates, and CSS classes are not modified — new files and new parameters only. This guarantees zero regression on any live usage.
