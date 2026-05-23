@@ -97,6 +97,22 @@ function bdp_get_unique() {
 }
 
 /**
+ * Shared public script data used by frontend and preview contexts.
+ *
+ * @since 4.0.11
+ */
+function bdp_get_public_script_data() {
+	return array(
+		'ajax_url'			=> admin_url( 'admin-ajax.php', ( is_ssl() ? 'https' : 'http' ) ),
+		'is_mobile'			=> wp_is_mobile() ? 1 : 0,
+		'is_rtl'			=> is_rtl() ? 1 : 0,
+		'no_post_found_msg'	=> esc_js( __( 'No more post to display.', 'blog-designer-pack' ) ),
+		'vc_page_edit'		=> ( function_exists( 'vc_is_page_editable' ) && vc_is_page_editable() ) ? 1 : 0,
+		'filter_nonce'		=> wp_create_nonce( 'bdpp_filter_nonce' ),
+	);
+}
+
+/**
  * Converts a string (e.g. 'yes' or 'no') to a bool.
  *
  * @since 1.5

@@ -18,7 +18,7 @@ $registered_shortcodes 	= bdp_registered_shortcodes();
 $shortcodes_arr 		= bdp_registered_shortcodes( false );
 $allowed_reg_shortcodes	= bdp_allowed_reg_shortcodes();
 $preview_shortcode 		= ! empty( $_GET['shortcode'] ) ? $_GET['shortcode'] : apply_filters('bdpp_default_preview_shortcode', 'bdp_post' );
-$preview_url 			= add_query_arg( array( 'page' => 'bdpp-shortcode-preview', 'shortcode' => $preview_shortcode), admin_url('admin.php') );
+$preview_url 			= add_query_arg( array( 'page' => 'bdpp-shortcode-preview', 'shortcode' => $preview_shortcode, '_wpnonce' => wp_create_nonce( 'bdpp-shortcode-preview' ) ), admin_url('admin.php') );
 $shrt_builder_url 		= add_query_arg( array('page' => 'bdpp-shrt-builder'), admin_url('admin.php') );
 
 // Version 7 compatibility

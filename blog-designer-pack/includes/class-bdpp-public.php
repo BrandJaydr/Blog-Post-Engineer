@@ -31,12 +31,24 @@ class BDP_Public {
 	 * @since 1.0
 	 */
 	function bdp_load_more_posts() {
+		check_ajax_referer( 'bdp_load_more_nonce', 'nonce' );
 
-		// Taking the shortocde parameters
-		$atts = json_decode( wp_unslash($_POST['shrt_param']), true );
-		extract( $atts );
+		// Taking the shortcode parameters.
+		$atts = array();
+		if ( ! empty( $_POST['shrt_param'] ) ) {
+			$atts = json_decode( wp_unslash( $_POST['shrt_param'] ), true );
+		}
+		$atts = is_array( $atts ) ? bdp_clean( $atts ) : array();
 
-		// Extract post_type and taxonomy with fallbacks to constants
+		$shortcode = isset( $atts['shortcode'] ) ? sanitize_key( $atts['shortcode'] ) : 'bdp_masonry';
+		$order     = isset( $atts['order'] ) && strtolower( $atts['order'] ) === 'asc' ? 'ASC' : 'DESC';
+		$orderby   = isset( $atts['orderby'] ) ? sanitize_text_field( $atts['orderby'] ) : 'date';
+		$limit     = isset( $atts['limit'] ) ? bdp_clean_number( $atts['limit'], 20, 'number' ) : 20;
+		$grid      = isset( $atts['grid'] ) ? bdp_clean_number( $atts['grid'], 3, 'number' ) : 3;
+		$category  = isset( $atts['category'] ) ? bdp_maybe_explode( $atts['category'] ) : array();
+		$media_size = isset( $atts['media_size'] ) ? sanitize_text_field( $atts['media_size'] ) : '';
+		$show_tags = isset( $atts['show_tags'] ) ? bdp_string_to_bool( $atts['show_tags'] ) : true;
+		$design    = isset( $atts['design'] ) ? sanitize_text_field( $atts['design'] ) : 'design-1';
 		$post_type = isset( $atts['post_type'] ) ? sanitize_text_field( $atts['post_type'] ) : BDP_POST_TYPE;
 		$taxonomy  = isset( $atts['taxonomy'] ) ? sanitize_text_field( $atts['taxonomy'] ) : BDP_CAT;
 
@@ -45,13 +57,12 @@ class BDP_Public {
 					'msg'		=> esc_html__( 'Sorry, Something happened wrong.', 'blog-designer-pack' ),
 				);
 		$paged				= isset( $_POST['paged'] )				? bdp_clean_number( $_POST['paged'] )	: 1;
-		$href				= isset( $_POST['href'] )				? bdp_clean_url( $_POST['href'] )		: '';
-		$count				= isset( $count )						? $count					: 0;
-		$count				= isset( $_POST['count'] )				? $_POST['count']			: $count;
-		$pagination_type	= isset( $atts['pagination_type'] )		? $atts['pagination_type']	: '';
-		$query_shrt			= str_replace('bdp_', 'bdpp_', $shortcode);
-		$shortcode_designs 	= bdp_post_masonry_designs();
-		$atts['design'] 	= ( $atts['design'] && (array_key_exists(trim($atts['design']), $shortcode_designs)) ) ? trim( $atts['design'] ) : 'design-1';
+		$count				= isset( $_POST['count'] )				? bdp_clean_number( $_POST['count'], 0, 'number' ) : 0;
+		$query_shrt			= str_replace( 'bdp_', 'bdpp_', $shortcode );
+		$template_dir		= ( 'bdp_post' === $shortcode ) ? 'grid' : 'masonry';
+		$shortcode_designs 	= ( 'bdp_post' === $shortcode ) ? bdp_post_designs() : bdp_post_masonry_designs();
+		$design 			= ( $design && array_key_exists( trim( $design ), $shortcode_designs ) ) ? trim( $design ) : 'design-1';
+		$atts['design']		= $design;
 		$atts['loop_count'] = 0;
 
 		// If valid data found
@@ -63,7 +74,7 @@ class BDP_Public {
 			// WP Query Parameters
 			$args = array(
 				'post_type'      		=> $post_type,
-				'post_status' 			=> array('publish'),
+				'post_status' 			=> array( 'publish' ),
 				'order'					=> $order,
 				'orderby'		 		=> $orderby,
 				'posts_per_page' 		=> $limit,
@@ -72,13 +83,13 @@ class BDP_Public {
 			);
 
 		    // Category Parameter
-			if( $category ) {
+			if( ! empty( $category ) ) {
 
 				$args['tax_query'] = array(
 										array( 
 											'taxonomy' 	=> $taxonomy,
 											'terms' 	=> $category,
-											'field' 	=> ( isset($category[0]) && is_numeric($category[0]) ) ? 'term_id' : 'slug',
+											'field' 	=> ( isset( $category[0] ) && is_numeric( $category[0] ) ) ? 'term_id' : 'slug',
 										));
 			}
 
@@ -105,15 +116,21 @@ class BDP_Public {
 					$atts['feat_img'] 	= bdp_get_post_feat_image( $post->ID, $media_size );
 					$atts['post_link'] 	= bdp_get_post_link( $post->ID );
 					$atts['cate_name'] 	= bdp_get_post_terms( $post->ID, $taxonomy );
-					$atts['tags']  		= isset( $show_tags ) ? bdp_post_meta_data( array('tag' => $show_tags), array('tag_taxonomy' => 'post_tag') ) : '';
+					$atts['tags']  		= $show_tags ? bdp_post_meta_data( array( 'tag' => $show_tags ), array( 'tag_taxonomy' => 'post_tag' ) ) : '';
 
-					$atts['wrp_cls']	= "bdpp-post-{$post->ID} bdpp-post-{$atts['format']}";
-					$atts['wrp_cls']	.= ( is_sticky( $post->ID ) ) 	? ' bdpp-sticky'	: '';
-					$atts['wrp_cls'] 	.= empty( $atts['feat_img'] )	? ' bdpp-no-thumb'	: ' bdpp-has-thumb';
-					$atts['wrp_cls']	.= " bdpp-col-{$grid} bdpp-columns";
+					if ( 'bdp_post' === $shortcode ) {
+						$atts['wrp_cls']  = "bdpp-col-{$grid} bdpp-columns bdpp-post-{$post->ID} bdpp-post-{$atts['format']}";
+						$atts['wrp_cls'] .= ( $count % $grid == 1 ) ? ' bdpp-first' : '';
+						$atts['wrp_cls'] .= empty( $atts['feat_img'] ) ? ' bdpp-no-thumb' : ' bdpp-has-thumb';
+					} else {
+						$atts['wrp_cls']	= "bdpp-post-{$post->ID} bdpp-post-{$atts['format']}";
+						$atts['wrp_cls']	.= ( is_sticky( $post->ID ) ) 	? ' bdpp-sticky'	: '';
+						$atts['wrp_cls'] 	.= empty( $atts['feat_img'] )	? ' bdpp-no-thumb'	: ' bdpp-has-thumb';
+						$atts['wrp_cls']	.= " bdpp-col-{$grid} bdpp-columns";
+					}
 
-					// Include Dsign File
-					include( BDP_DIR . "/templates/masonry/{$atts['design']}.php" );
+					// Include Design File
+					include( BDP_DIR . "/templates/{$template_dir}/{$design}.php" );
 
 				endwhile;
 

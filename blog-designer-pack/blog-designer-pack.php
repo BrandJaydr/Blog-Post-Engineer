@@ -92,7 +92,6 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 			$this->define( 'BDP_LAYOUT_POST_TYPE', 'bdpp_layout' );
 			$this->define( 'BDP_SETTING_PAGE_URL', add_query_arg( array('page' => 'bdpp-settings', 'tab' => 'general'), 'admin.php' ) );
 			$this->define( 'BDP_PRO_TAB_URL', add_query_arg( array('page' => 'bdpp-settings', 'tab' => 'pro'), 'admin.php' ) );
-			$this->define( 'BDP_UPGRADE_URL', add_query_arg( array('page' => 'bdpp-layouts-pricing'), 'admin.php' ) );
 		}
 
 		/**

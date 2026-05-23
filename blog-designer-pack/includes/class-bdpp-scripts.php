@@ -48,11 +48,6 @@ class BDP_Scripts {
 			wp_register_style( 'select2', BDP_URL.'assets/css/select2.min.css', array(), '4.0.3' );
 		}
 
-		// FS Pricing CSS
-		if( BDPP_SCREEN_ID.'_page_bdpp-layouts-pricing' == $hook_suffix ) {
-			wp_register_style( 'bdpp-fs-pricing', BDP_URL . 'assets/css/fs-pricing.css', array(), BDP_VERSION );
-			wp_enqueue_style( 'bdpp-fs-pricing' );
-		}
 
 		/* Styles */
 		wp_register_style( 'bdpp-admin-style', BDP_URL . "assets/css/bdpp-admin{$suffix}.css", array(), BDP_VERSION );
@@ -154,8 +149,6 @@ class BDP_Scripts {
 
 		global $post, $inf_plugin_identifier_data;
 
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
 		/* Styles */
 		// Registring and enqueing slick slider css
 		if( ! wp_style_is( 'owl-carousel', 'registered' ) && bdp_get_option('disable_owl_css') == 0 ) {
@@ -168,7 +161,8 @@ class BDP_Scripts {
 		}
 
 		// Registring and enqueing public script
-		wp_register_style( 'bdpp-public-style', BDP_URL . "assets/css/bdpp-public{$suffix}.css", array(), BDP_VERSION );
+		// Use the checked-in unminified public assets so runtime behavior matches the latest source.
+		wp_register_style( 'bdpp-public-style', BDP_URL . 'assets/css/bdpp-public.css', array(), BDP_VERSION );
 		
 		wp_enqueue_style( 'inf-font-awesome' );
 		wp_enqueue_style( 'owl-carousel' );
@@ -196,15 +190,8 @@ class BDP_Scripts {
 		}
 
 		// Admin Script (Do not forgot to update for elementor script action also)
-		wp_register_script( 'bdpp-public-script', BDP_URL . "assets/js/bdpp-public{$suffix}.js", array( 'jquery' ), BDP_VERSION, true );
-		wp_localize_script( 'bdpp-public-script', 'Bdpp', array( 
-																'ajax_url' 			=> admin_url( 'admin-ajax.php', ( is_ssl() ? 'https' : 'http' ) ),
-																'is_mobile'			=> wp_is_mobile(),
-																'is_rtl' 			=> ( is_rtl() ) ? 1 : 0,
-																'no_post_found_msg'	=> esc_js( __('No more post to display.', 'blog-designer-pack') ),
-																'vc_page_edit'		=> ( function_exists('vc_is_page_editable') && vc_is_page_editable() ) ? 1 : 0,
-																'filter_nonce'      => wp_create_nonce( 'bdpp_filter_nonce' ),
-															));
+		wp_register_script( 'bdpp-public-script', BDP_URL . 'assets/js/bdpp-public.js', array( 'jquery' ), BDP_VERSION, true );
+		wp_localize_script( 'bdpp-public-script', 'Bdpp', bdp_get_public_script_data() );
 
 		/*===== Page Builder Scripts =====*/
 		// VC Front End Page Editing

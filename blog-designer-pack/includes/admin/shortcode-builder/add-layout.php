@@ -21,7 +21,7 @@ $allowed_reg_shortcodes	= bdp_allowed_reg_shortcodes();
 $preview_shortcode 		= ! empty( $_GET['shortcode'] ) ? $_GET['shortcode'] : apply_filters('bdpp_default_preview_shortcode', 'bdp_post' );
 $action					= ( ! empty( $_GET['action'] ) && 'edit' == $_GET['action'] ) ? 'edit' : 'add';
 $layout_id				= ( ! empty( $_GET['id'] ) && 'edit' == $action ) ? bdp_clean_number( $_GET['id'] ) : false;
-$preview_url 			= add_query_arg( array('page' => 'bdpp-shortcode-preview', 'shortcode' => $preview_shortcode), admin_url('admin.php') );
+$preview_url 			= add_query_arg( array('page' => 'bdpp-shortcode-preview', 'shortcode' => $preview_shortcode, '_wpnonce' => wp_create_nonce( 'bdpp-shortcode-preview' ) ), admin_url('admin.php') );
 $page_url				= add_query_arg( array('page' => 'bdpp-layout'), admin_url('admin.php') );
 
 // Version 7 compatibility

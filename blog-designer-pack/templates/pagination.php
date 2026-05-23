@@ -16,7 +16,7 @@ if( $atts['pagination'] && $atts['max_num_pages'] > 1 ) { ?>
 			if( $atts['paged'] < $atts['max_num_pages'] ) {
 		?>
 
-			<div class="bdpp-load-more bdpp-post-load-more bdpp-ajax-btn-style" data-conf="<?php echo htmlspecialchars( bdp_shortcode_conf( $atts ) ); ?>" data-paged="<?php echo esc_attr( $atts['paged'] ); ?>"><?php esc_html_e( 'Load More', 'blog-designer-pack' ); ?> <i class="bdpp-fa fa-solid fa-chevron-down bdpp-load-more-icon"></i> <span class="bdpp-loader"></span></div>
+			<div class="bdpp-load-more bdpp-post-load-more bdpp-ajax-btn-style" data-conf="<?php echo htmlspecialchars( bdp_shortcode_conf( $atts ) ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'bdp_load_more_nonce' ) ); ?>" data-paged="<?php echo esc_attr( $atts['paged'] ); ?>"><?php esc_html_e( 'Load More', 'blog-designer-pack' ); ?> <i class="bdpp-fa fa-solid fa-chevron-down bdpp-load-more-icon"></i> <span class="bdpp-loader"></span></div>
 
 		<?php } } else {
 

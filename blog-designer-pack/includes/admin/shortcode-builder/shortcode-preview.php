@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$authenticated          = false; 
 $registered_shortcodes  = bdp_registered_shortcodes();
+$preview_nonce          = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
 // Getting shortcode value
 if( ! empty( $_POST['bdpp_customizer_shrt'] ) ) {
@@ -20,21 +20,8 @@ if( ! empty( $_POST['bdpp_customizer_shrt'] ) ) {
 	$shortcode_val = '';
 }
 
-// For authentication so no one can use page via URL
-if( ! empty( $_SERVER['HTTP_REFERER'] ) ) {
-	$url_query  = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY);
-	parse_str( $url_query, $referer );
-
-	if( ! empty( $referer['page'] ) && ( 'bdpp-shrt-builder' == $referer['page'] || 'bdpp-layout' == $referer['page'] ) ) {
-		$authenticated = true;
-	}
-
-} elseif ( is_user_logged_in() && current_user_can('manage_options') ) {
-	$authenticated = true;
-}
-
 // Check Authentication else exit
-if( ! $authenticated ) {
+if( ! is_user_logged_in() || ! current_user_can('manage_options') || ! wp_verify_nonce( $preview_nonce, 'bdpp-shortcode-preview' ) ) {
 	wp_die( __('Sorry, you are not allowed to access this page.', 'blog-designer-pack') );
 }
 ?>
@@ -71,12 +58,7 @@ if( ! $authenticated ) {
 
 		<script type='text/javascript'> 
 		/*<![CDATA[*/
-		var Bdpp = <?php echo wp_json_encode(array(
-												'ajax_url'			=> admin_url( 'admin-ajax.php', ( is_ssl() ? 'https' : 'http' ) ),
-												'is_mobile'			=> (wp_is_mobile()) ? 1 : 0,
-												'is_rtl'			=> (is_rtl())       ? 1 : 0,
-												'no_post_found_msg'	=> esc_js( __('No more post to display.', 'blog-designer-pack') ),
-											)); ?>;
+		var Bdpp = <?php echo wp_json_encode( bdp_get_public_script_data() ); ?>;
 		/*]]>*/
 		</script>
 		<script type="text/javascript" src="<?php echo esc_url( BDP_URL."assets/js/owl.carousel.min.js?ver=".BDP_VERSION ); ?>"></script>

@@ -41,5 +41,4 @@ build/
 *.min.css
 
 # Memory files
-.memory/
 .windsurf/

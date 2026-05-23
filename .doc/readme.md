@@ -25,8 +25,42 @@ This project is a high-fidelity fork of the **Blog Designer Pack** WordPress plu
 - [ ] Category-specific filtering without page reload.
 
 ### Track D: Ecosystem Integration
-- [ ] Surgical removal of Freemius SDK telemetry.
+- [x] Surgical removal of Freemius SDK telemetry.
 - [ ] Registration with `GG_Module_Registry`.
 
 ## Documentation
 Technical findings and security audits are maintained in the `.memory/agent_journal/` directory for assistant reference.
+
+---
+
+## Security & Architecture Improvements (Verified)
+
+### Shortcode Preview Authentication
+- **File:** `includes/admin/shortcode-builder/shortcode-preview.php`
+- **Change:** Authentication is no longer referer-based
+- **Implementation:** Now requires `manage_options` capability plus `bdpp-shortcode-preview` nonce
+- **Benefit:** More secure preview access control
+
+### Grid Load More Generalization
+- **File:** `includes/class-bdpp-public.php`
+- **Change:** Load more handler generalized to support both grid and masonry shortcodes
+- **Implementation:** Switches template directory and design registry based on shortcode type
+  - `bdp_post` uses grid templates
+  - `bdp_masonry` keeps its own path
+- **Benefit:** Unified Ajax handler reduces code duplication
+
+### Public Script Localization
+- **File:** `includes/bdpp-functions.php`
+- **Function:** `bdp_get_public_script_data()`
+- **Implementation:** Centralized script data localization
+- **Consumers:** Both public enqueue and preview contexts
+- **Benefit:** Consistent script data across all contexts
+
+### Load More Security Hardening
+- **File:** `includes/class-bdpp-public.php`
+- **Change:** Load more path hardened with nonce and explicit field parsing
+- **Implementation:**
+  - Added `check_ajax_referer( 'bdp_load_more_nonce', 'nonce' )`
+  - Replaced `extract()` with explicit field parsing
+  - Added nonce to load more button in `pagination.php`
+- **Benefit:** CSRF protection and more predictable input handling

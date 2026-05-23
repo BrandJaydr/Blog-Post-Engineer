@@ -234,6 +234,7 @@ function bdpp_load_more_pagi() {
 		var cls_ele		= current_obj.closest('.bdpp-post-data-wrap');
 		var cnt_ele		= cls_ele.find('.bdpp-post-data-inr-wrap');
 		var shrt_param	= current_obj.attr('data-conf');
+		var nonce		= current_obj.attr('data-nonce');
 		var paged		= current_obj.attr('data-paged');
 
 		if( cls_ele.hasClass('bdpp-post-masonry-wrap') ) {
@@ -256,6 +257,7 @@ function bdpp_load_more_pagi() {
 			var data = {
 							action		: 'bdp_load_more_posts',
 							shrt_param	: shrt_param,
+							nonce		: nonce,
 							paged		: paged,
 							count		: current_obj.attr('data-count')
 						};

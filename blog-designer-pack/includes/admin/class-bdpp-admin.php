@@ -27,9 +27,6 @@ class BDP_Admin {
 
 		// Filter for post row data
 		add_filter( 'post_row_actions', array($this, 'bdp_manage_post_row_data'), 10, 2 );
-
-		// Action to add admin message
-		add_action( 'admin_notices', array($this, 'bdp_premium_admin_messages') );
 	}
 
 	/**
@@ -266,11 +263,6 @@ class BDP_Admin {
 			}
 		}
 
-		// If promote premium notice is cancelled
-		if( isset( $_GET['message'] ) && $_GET['message'] == 'bdp-pro-buy-notice' && isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'bdp-promote-notice' ) ) {
-			set_transient( 'bdp_pro_buy_notice', 1, 30 * DAY_IN_SECONDS );
-		}
-
 		// A Tweak to remove some unnecessary paramters from the URL on layout listing page like WP did on post listing page.
 		if ( ! empty( $_GET['page'] ) && 'bdpp-layouts' == $_GET['page'] && ! empty( $_REQUEST['_wp_http_referer'] ) ) {
 			wp_redirect( remove_query_arg( array( '_wp_http_referer', '_wpnonce' ), wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
@@ -289,42 +281,6 @@ class BDP_Admin {
 			return array_merge( array( 'post_id' => esc_html__('ID:', 'blog-designer-pack') .' '. $post->ID ), $actions );
 		}
 		return $actions;
-	}
-
-	/**
-	 * Function to add admin message for premium version
-	 * 
-	 * @since 4.0.9
-	 */
-	function bdp_premium_admin_messages() {
-
-		$notice_transient	= get_transient( 'bdp_pro_buy_notice' );
-		$restricted_pages	= array('bdpp-layout', 'bdpp-shrt-builder', 'bdpp-layouts-account');
-		$page				= isset( $_GET['page'] )	? sanitize_text_field( $_GET['page'] )	: '';
-		$tab				= isset( $_GET['tab'] )		? sanitize_text_field( $_GET['tab'] )	: '';
-
-		if ( $notice_transient == false && ( ! in_array( $page, $restricted_pages ) ) && ( 'bdpp-settings' != $page || 'pro' != $tab ) ) {
-
-			$notice_link = wp_nonce_url( add_query_arg( array('message' => 'bdp-pro-buy-notice') ), 'bdp-promote-notice' );
-			$notices = array(
-								0 => sprintf( __('Hey! It looks like that you are using Blog Designer Pack for a while. Would you like to a look at the Pro version? <a href="%s">Click here</a> for the amazing features.', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								1 => sprintf( __('Hey! Do you know Blog Designer Pack Pro have 90+ premium layouts? <a href="%s">Click here</a> to take a look.', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								2 => sprintf( __('Hey! Blog Designer Pack Pro supports Custom Post type and Custom taxonomy. <a href="%s">Upgrade now</a> to create a any layout for Custom Post type.', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								4 => sprintf( __('Hey! Do you want more layouts for Post Slider and Post Carousel? <a href="%s">Upgrade now</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								5 => sprintf( __('Load More or Infinite Scrolling pagination can be a good feature for your blog page with Blog Designer Pack. <a href="%s">Take a look</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								6 => sprintf( __('Create Category Grid or Category Slider with Blog Designer Pack Pro. <a href="%s">Take a look</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								7 => sprintf( __('Create Post Timeline layout with Blog Designer Pack Pro. <a href="%s">Upgrade now</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								8 => sprintf( __('Display Featured Post or Trending Post with Blog Designer Pack Pro. <a href="%s">Upgrade now</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								9 => sprintf( __('Use social sharing feature for Post with Blog Designer Pack Pro. <a href="%s">Upgrade now</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-								10 => sprintf( __('Use AJAX Filter functionality for Post with Blog Designer Pack Pro. <a href="%s">Upgrade now</a>', 'blog-designer-pack'), BDP_PRO_TAB_URL ),
-							);
-			$notice_key = array_rand( $notices );
-
-			echo '<div class="updated notice" style="position:relative;">
-					<p><span style="background-color:tomato; display:inline-block; padding:2px 5px; margin:0 6px 0 0; border-radius:3px; color:#fff; font-size:12px; font-weight:600;">🎉 '.esc_html__('Special Offer - Unlock Pro & Save Big!', 'blog-designer-pack').'</span> '.$notices[ $notice_key ].'</p>
-					<a href="'.esc_url( $notice_link ).'" class="notice-dismiss" style="text-decoration:none;"></a>
-				</div>';
-		}
 	}
 }
 
