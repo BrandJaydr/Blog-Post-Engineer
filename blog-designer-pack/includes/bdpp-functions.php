@@ -588,6 +588,7 @@ function bdp_post_designs() {
 		'design-1'	=> esc_html__('Design 1', 'blog-designer-pack'),
 		'design-2'	=> esc_html__('Design 2', 'blog-designer-pack'),
 		'design-3'	=> esc_html__('Design 3', 'blog-designer-pack'),
+		'design-4'	=> esc_html__('Design 4', 'blog-designer-pack'),
 	);
 	
 	return $design_arr;

@@ -1,17 +1,17 @@
 <?php
 /**
- * Plugin Name: Blog Designer Pack
- * Plugin URI: https://infornweb.com/news-blog-designer-pack-pro/
- * Description: Display blog posts on your website with 6 blog layouts (2 designs for each blog layout) plus 1 Ticker and 2 Widgets
- * Text Domain: blog-designer-pack
+ * Plugin Name: Blog Post Engineer
+ * Plugin URI: https://github.com/BrandJaydr/gg-blogging-engine
+ * Description: Display blog posts with multiple layout options including grid, masonry, list, carousel, slider, and ticker. Part of the Gorgeous Gizmos (GG) ecosystem with HSL-based color palettes and CSS variable conventions.
+ * Text Domain: blog-post-engineer
  * Domain Path: /languages/
- * Author: InfornWeb
- * Author URI: https://infornweb.com
+ * Author: Brand Jaydr
+ * Author URI: 
  * Version: 4.0.11
  * Requires at least: 5.8
  * Requires PHP: 5.4
- * 
- * @package Blog Designer Pack
+ *
+ * @package Blog Post Engineer
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -100,24 +100,24 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 		 * @since 1.0
 		 */
 		public function bdp_load_textdomain() {
-			
+
 			// Set filter for plugin's languages directory.
 			$bdp_lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
 			$bdp_lang_dir = apply_filters( 'bdpp_languages_directory', $bdp_lang_dir );
 
 			// Traditional WordPress plugin locale filter.
-			$locale	= apply_filters( 'plugin_locale', get_user_locale(), 'blog-designer-pack' );
-			$mofile	= sprintf( '%1$s-%2$s.mo', 'blog-designer-pack', $locale );
-			
+			$locale	= apply_filters( 'plugin_locale', get_user_locale(), 'blog-post-engineer' );
+			$mofile	= sprintf( '%1$s-%2$s.mo', 'blog-post-engineer', $locale );
+
 			// Setup paths to current locale file
 			$mofile_global	= WP_LANG_DIR . '/plugins/' . BDP_BASENAME . '/' . $mofile;
-			
-			if ( file_exists( $mofile_global ) ) { // Look in global /wp-content/languages/blog-designer-pack-pro folder
-				
-				load_textdomain( 'blog-designer-pack', $mofile_global );
-				
+
+			if ( file_exists( $mofile_global ) ) { // Look in global /wp-content/languages/blog-post-engineer folder
+
+				load_textdomain( 'blog-post-engineer', $mofile_global );
+
 			} else { // Load the default language files
-				load_plugin_textdomain( 'blog-designer-pack', false, $bdp_lang_dir );
+				load_plugin_textdomain( 'blog-post-engineer', false, $bdp_lang_dir );
 			}
 		}
 
@@ -255,7 +255,10 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 			 * Plugin Menu Name just to check the screen ID to load condition based assets
 			 * This var is not going to be echo anywhere. `sanitize_title` will take care of string.
 			 */
-			$this->define( 'BDPP_SCREEN_ID', sanitize_title(__('Blog Designer Pack', 'blog-designer-pack')) );
+			$this->define( 'BDPP_SCREEN_ID', sanitize_title(__('Blog Post Engineer', 'blog-post-engineer')) );
+
+			// Register gg_post_grid alias shortcode for GG ecosystem compatibility
+			add_shortcode( 'gg_post_grid', 'bdp_render_post_grid' );
 
 			// Add BDP Image sizes to WP.
 			add_image_size( 'bdpp-medium', 640, 480, true );

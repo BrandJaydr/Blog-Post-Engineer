@@ -26,6 +26,7 @@ This project is a high-fidelity fork of the **Blog Designer Pack** WordPress plu
 
 ### Track D: Ecosystem Integration
 - [x] Surgical removal of Freemius SDK telemetry.
+- [x] Plugin rename and rebrand (Blog Post Engineer).
 - [ ] Registration with `GG_Module_Registry`.
 
 ### Track E: Admin & UX Improvements

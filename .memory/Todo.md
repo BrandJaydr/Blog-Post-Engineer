@@ -188,13 +188,22 @@
     - Accent/Cerise `#de3163` → `var(--gg-accent, #de3163)`
     - Surface/BG → `var(--gg-surface, #f9f9f9)`
   - **Source:** Objectives doc — D4, Situation Assessment — Branding Considerations
-- [ ] **D5 — Plugin Rename & Rebrand** | 30 min | 🟢 LOW
+- [X] **D5 — Plugin Rename & Rebrand** | ✅ DONE
 
-  - Update Plugin Name header: `Blog Designer Pack` → `GG Blogging Engine`
-  - Update Text Domain: `blog-designer-pack` → `gg-blogging` (or `gg-post-layouts`)
-  - Replace `InfornWeb` author references in plugin header
-  - Register `gg_post_grid` as an alias shortcode pointing to existing handler (keep `bdp_post` alive for backward compat)
+  - Updated Plugin Name header: `Blog Designer Pack` → `Blog Post Engineer`
+  - Updated Text Domain: `blog-designer-pack` → `blog-post-engineer`
+  - Updated Plugin URI: `https://infornweb.com/news-blog-designer-pack-pro/` → `https://github.com/BrandJaydr/gg-blogging-engine`
+  - Updated Author: `InfornWeb` → `Brand Jaydr`
+  - Updated Description to reflect GG ecosystem integration
+  - Registered `gg_post_grid` as alias shortcode pointing to `bdp_render_post_grid` handler
+  - Updated BDPP_SCREEN_ID constant to use new name and text domain
   - **Source:** Objectives doc — D5, Situation Assessment — Branding Considerations
+
+  **Future Breaking Changes (Deferred):**
+  - Class rename: `Blog_Designer_Pack_Lite` → `Blog_Post_Engine` (breaking)
+  - Function rename: `BDP_Lite()` → `BPE()` (breaking)
+  - Constants rename: `BDP_*` → `BPE_*` or `GG_*` (breaking)
+  - Version bump: `4.0.11` → `1.0.0` to indicate fork (breaking)
 
 ---
 
@@ -391,3 +400,47 @@ The `res.success === false` path now displays an error message in the grid area.
 | Resolved | Fix category-name taxonomy usage in filter Ajax | `class-bdpp-public.php` |
 | Resolved | Apply the same dynamic query pattern to `bdp_load_more_posts()` | `class-bdpp-public.php` |
 | Low | Fix indentation on line 183 | `bdpp-post-grid.php` |
+
+---
+
+## 🎨 FUTURE — Customization Scaffold (Design-4 & Beyond)
+
+> **Purpose:** Enable other applications to use this codebase without hardcoded GG brand colors and styling
+
+### Design-4 Customization Options (Future Development)
+
+- [ ] **Font Family Customization** | LOW
+  - Add shortcode parameter for custom font family
+  - Integrate with global theme font options
+  - **Files:** `bdpp-post-grid.php`, design templates
+
+- [ ] **Color Override System** | LOW (Coordinate with Track D4)
+  - Replace hardcoded GG colors with CSS custom properties
+  - Add shortcode parameters for color overrides
+  - Support theme color integration
+  - **Files:** `bdpp-public.css`, template files
+
+- [ ] **Transition Timing Options** | LOW
+  - Add parameter for custom cubic-bezier values
+  - Support preset transition options (fast, slow, bounce)
+  - **Files:** `bdpp-public.css`, template files
+
+- [ ] **Background/Border Toggle Parameters** | LOW
+  - Add shortcode parameters for background style (bg/border/transparent)
+  - Make design-4 background variants user-selectable
+  - **Files:** `bdpp-post-grid.php`, `bdpp-public.css`
+
+- [ ] **Hover Effect Customization** | LOW
+  - Add parameters for hover animation intensity
+  - Support disable hover effects option
+  - **Files:** `bdpp-public.css`
+
+- [ ] **Global Theme Options Integration** | LOW
+  - Create settings page for global design defaults
+  - Support WordPress Customizer integration
+  - **Files:** New settings file, admin interface
+
+### Implementation Notes
+- Coordinate with Track D4 (CSS Variable Alignment) for color customization
+- Ensure backward compatibility with existing GG design standards
+- All customization should be opt-in, default to GG styling
