@@ -204,11 +204,11 @@
 
 ---
 
-- [ ] **E1 — Shortcode Generator: Add Filter Params** | 1 hr | 🟡 MEDIUM
+- [X] **E1 — Shortcode Generator: Add Filter Params** | ✅ DONE
 
-  - In `blog-designer-pack/includes/admin/shortcode-support/shortcode-fields.php`:
-    - Add `filter_cats` and `show_filter` input fields under the free params section
-    - Hide or neutralise "Upgrade to Pro" labels on `sharing` and `style_id` fields
+  - Added `filter_cats` and `show_filter` input fields to query section in shortcode-fields.php
+  - Removed `premium => true` flag from Social Sharing section
+  - Removed `premium => true` flag from Style Manager section
   - **Source:** Objectives doc — E1
 - [ ] **E2 — Live Preview in Shortcode Builder** | 3 hrs | 🟢 LOW
 

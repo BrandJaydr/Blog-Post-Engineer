@@ -226,6 +226,32 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 										),
 										array(
 											'type' 			=> 'dropdown',
+											'heading' 		=> __( 'Show Filter', 'blog-designer-pack' ),
+											'name' 			=> 'show_filter',
+											'value' 		=> array(
+																	'true'	=> __( 'True', 'blog-designer-pack' ),
+																	'false'	=> __( 'False', 'blog-designer-pack' ),
+																),
+											'desc' 			=> __( 'Display category filter bar above posts.', 'blog-designer-pack' ),
+										),
+										array(
+											'type' 			=> 'dropdown',
+											'heading' 		=> __( 'Filter Categories', 'blog-designer-pack' ),
+											'name' 			=> 'filter_cats',
+											'value' 		=> '',
+											'class'			=> 'bdpp-ajax-select2 bdpp-filter-cats-sel',
+											'multi'			=> true,
+											'ajax'			=> true,
+											'ajax_action'	=> 'bdpp_category_sugg',
+											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
+											'desc' 			=> __( 'Choose categories to display in filter bar.', 'blog-designer-pack' ),
+											'dependency' 	=> array(
+																	'element' 	=> 'show_filter',
+																	'value' 	=> array( 'true' ),
+																),
+										),
+										array(
+											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Post Order By', 'blog-designer-pack' ),
 											'name' 			=> 'orderby',
 											'value' 		=>  array(
@@ -475,7 +501,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 			// Social Sharing
 			'social_sharing' => array(
 					'title'		=> __('Social Sharing', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type'	=> 'dropdown',
@@ -641,7 +666,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 			// Style Manager
 			'style_manager' => array(
 					'title'		=> __('Style Manager', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type'		=> 'dropdown',

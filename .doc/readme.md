@@ -28,6 +28,11 @@ This project is a high-fidelity fork of the **Blog Designer Pack** WordPress plu
 - [x] Surgical removal of Freemius SDK telemetry.
 - [ ] Registration with `GG_Module_Registry`.
 
+### Track E: Admin & UX Improvements
+- [x] Shortcode Generator filter params
+- [ ] Live preview in shortcode builder
+- [ ] Settings page defaults
+
 ## Documentation
 Technical findings and security audits are maintained in the `.memory/agent_journal/` directory for assistant reference.
 
