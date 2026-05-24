@@ -3,13 +3,13 @@
  * Plugin Name: Blog Post Engineer
  * Plugin URI: https://github.com/BrandJaydr/gg-blogging-engine
  * Description: Display blog posts with multiple layout options including grid, masonry, list, carousel, slider, and ticker. Part of the Gorgeous Gizmos (GG) ecosystem with HSL-based color palettes and CSS variable conventions.
- * Text Domain: blog-designer-pack
+ * Text Domain: blog-post-engineer
  * Domain Path: /languages/
  * Author: Brand Jaydr
  * Author URI: 
  * Version: 4.0.11
  * Requires at least: 5.8
- * Requires PHP: 5.4
+ * Requires PHP: 7.4
  *
  * @package Blog Post Engineer
  */
