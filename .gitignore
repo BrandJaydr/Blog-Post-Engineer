@@ -42,3 +42,8 @@ build/
 
 # Memory files
 .windsurf/
+
+# Agent CLI tools
+.antigravitycli/
+.cortex/
+.memix/

@@ -3,7 +3,7 @@
  * Plugin Name: Blog Post Engineer
  * Plugin URI: https://github.com/BrandJaydr/gg-blogging-engine
  * Description: Display blog posts with multiple layout options including grid, masonry, list, carousel, slider, and ticker. Part of the Gorgeous Gizmos (GG) ecosystem with HSL-based color palettes and CSS variable conventions.
- * Text Domain: blog-post-engineer
+ * Text Domain: blog-designer-pack
  * Domain Path: /languages/
  * Author: Brand Jaydr
  * Author URI: 
@@ -18,9 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-if ( function_exists( 'bdp_fs' ) ) {
-	bdp_fs()->set_basename( true, __FILE__ );
-}
+// Freemius SDK deactivated - removed per security posture
+// if ( function_exists( 'bdp_fs' ) ) {
+// 	bdp_fs()->set_basename( true, __FILE__ );
+// }
 
 if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 
@@ -130,8 +131,8 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 
 			global $bdpp_options;
 
-			// Including freemius file
-			include_once( BDP_DIR . '/freemius.php' );
+			// Freemius SDK deactivated - removed per security posture
+			// include_once( BDP_DIR . '/freemius.php' );
 
 			// Register Post Type
 			require_once( BDP_DIR . '/includes/bdpp-post-types.php' );
