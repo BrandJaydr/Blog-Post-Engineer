@@ -21,7 +21,7 @@ if( ! empty( $_POST['bdpp_customizer_shrt'] ) ) {
 }
 
 // Check Authentication else exit
-if( ! is_user_logged_in() || ! current_user_can('manage_options') || ! wp_verify_nonce( $preview_nonce, 'bdpp-shortcode-preview' ) ) {
+if( ! is_user_logged_in() || ! current_user_can('manage_options') || ! wp_verify_nonce( $preview_nonce, 'bdpp_shortcode_preview' ) ) {
 	wp_die( __('Sorry, you are not allowed to access this page.', 'blog-designer-pack') );
 }
 ?>
