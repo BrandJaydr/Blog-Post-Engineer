@@ -589,6 +589,8 @@ function bdp_post_designs() {
 		'design-2'	=> esc_html__('Design 2', 'blog-designer-pack'),
 		'design-3'	=> esc_html__('Design 3', 'blog-designer-pack'),
 		'design-4'	=> esc_html__('Design 4', 'blog-designer-pack'),
+		'design-5'	=> esc_html__('Design 5', 'blog-designer-pack'),
+		'design-hero'=> esc_html__('Hero Layout', 'blog-designer-pack'),
 	);
 	
 	return $design_arr;
@@ -648,6 +650,7 @@ function bdp_post_gridbox_designs() {
 
 	$design_arr = array(
 		'design-1'	=> esc_html__('Design 1', 'blog-designer-pack'),
+		'design-2'	=> esc_html__('Design 2', 'blog-designer-pack'),
 	);
 
 	return $design_arr;
@@ -757,6 +760,18 @@ function bdp_registered_shortcodes( $type = 'simplified' ) {
  */
 function bdp_allowed_reg_shortcodes() {
 	return array( 'bdp_post', 'bdp_post_list', 'bdp_masonry', 'bdp_post_slider', 'bdp_post_carousel', 'bdp_post_gridbox', 'bdp_ticker' );
+}
+
+/**
+ * Get default shortcode parameter value with fallback
+ * 
+ * @since 4.0.11
+ */
+function bdp_get_default_param( $param_key, $default_value = '' ) {
+	
+	$default_param = bdp_get_option( $param_key, $default_value );
+	
+	return $default_param;
 }
 
 /**

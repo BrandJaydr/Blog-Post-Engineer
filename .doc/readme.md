@@ -17,27 +17,36 @@ This project is a high-fidelity fork of the **Blog Designer Pack** WordPress plu
 - [x] Added error feedback for failed Ajax in `bdpp-public.js`.
 - [x] Unlock query parameter UI fields (Taxonomy, Cat Taxonomy, Tag Taxonomy, Category Operator, Display Child Category Posts, Exclude By Category, Include Post, Exclude Post, Include By Author, Exclude By Author, Display Sticky Posts, Display Type, Query Offset).
 
-### Track B: Layouts & Design
-- [x] Creation of Design-3 (Hover Overlay Grid) - HIGH PRIORITY.
-- [ ] Porting existing designs to GG cubic-bezier transition standards.
+### Track B: Layouts & Design (Complete)
+- [x] Design-3 (Hover Overlay Grid)
+- [x] Design-4 (Minimal Text-Only Card)
+- [x] Design-5 (Horizontal Split Card)
+- [x] Grid-Box Design-2 Unlock
+- [x] Timeline Layout (`[gg_post_timeline]` shortcode)
+- [x] Featured Post Hero Layout
+- [x] Porting existing designs to GG cubic-bezier transition standards.
 
-### Track C: Ajax Infrastructure
+### Track C: Ajax Infrastructure (Complete — My Ownership)
 - [x] Expanding Masonry "Load More" logic to Grid views.
+- [x] Load More for Post List — added `bdp_post_list` to pagination handler, extended Ajax template mapping.
+- [x] Infinite Scroll — new `infinite_scroll` param on grid, list, and masonry via IntersectionObserver sentinel.
 - [x] Category-specific filtering without page reload (bdp_filter_posts Ajax handler implemented).
 
-### Track D: Ecosystem Integration
+### Track D: Ecosystem Integration (Complete)
 - [x] Surgical removal of Freemius SDK telemetry.
 - [x] Plugin rename and rebrand (Blog Post Engineer).
 - [x] Registration with `GG_Module_Registry` (added gg_register_module hook in bdp_plugins_loaded).
+- [x] GG Admin Menu Integration
+- [x] CSS Variable Alignment (--gg-primary, --gg-accent)
 
-### Track E: Admin & UX Improvements
+### Track E: Admin & UX Improvements (Complete)
 - [x] Shortcode Generator filter params
 - [x] Unlock Meta & Content premium fields (Show Sub Title, Post Link Target)
 - [x] Unlock Paginations premium fields (Previous/Next Button Text)
 - [x] Unlock Filter section
 - [x] Unlock Slider premium fields (Previous/Next Button Text)
 - [x] Live preview in shortcode builder (fixed nonce verification in shortcode-preview.php)
-- [ ] Settings page defaults
+- [x] Settings page defaults (Plugin-wide defaults for grid columns, design, post limit)
 
 ## Documentation
 Technical findings and security audits are maintained in the `.memory/agent_journal/` directory for assistant reference.

@@ -50,6 +50,11 @@ class BDP_Public {
 		$show_tags = isset( $atts['show_tags'] ) ? bdp_string_to_bool( $atts['show_tags'] ) : true;
 		$design    = isset( $atts['design'] ) ? sanitize_text_field( $atts['design'] ) : 'design-1';
 		$post_type = isset( $atts['post_type'] ) ? sanitize_text_field( $atts['post_type'] ) : BDP_POST_TYPE;
+		// Whitelist post_type against registered public post types
+		$allowed_post_types  = array_keys( bdp_get_post_types() );
+		if ( ! in_array( $post_type, $allowed_post_types, true ) ) {
+			$post_type = BDP_POST_TYPE;
+		}
 		$taxonomy  = isset( $atts['taxonomy'] ) ? sanitize_text_field( $atts['taxonomy'] ) : BDP_CAT;
 
 		$result = array(
@@ -186,6 +191,11 @@ class BDP_Public {
 		$show_read_more      = isset( $atts['show_read_more'] ) ? bdp_string_to_bool( $atts['show_read_more'] ) : true;
 		$read_more_text      = isset( $atts['read_more_text'] ) ? sanitize_text_field( $atts['read_more_text'] ) : __( 'Read More', 'blog-designer-pack' );
 		$post_type           = isset( $atts['post_type'] ) ? sanitize_text_field( $atts['post_type'] ) : BDP_POST_TYPE;
+		// Whitelist post_type against registered public post types
+		$allowed_post_types  = array_keys( bdp_get_post_types() );
+		if ( ! in_array( $post_type, $allowed_post_types, true ) ) {
+			$post_type = BDP_POST_TYPE;
+		}
 		$taxonomy            = isset( $atts['taxonomy'] ) ? sanitize_text_field( $atts['taxonomy'] ) : BDP_CAT;
 		$link_behaviour      = isset( $atts['link_behaviour'] ) && $atts['link_behaviour'] === 'new' ? 'new' : 'self';
 		$order               = isset( $atts['order'] ) && strtolower( $atts['order'] ) === 'asc' ? 'ASC' : 'DESC';

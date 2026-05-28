@@ -22,10 +22,10 @@ function bdp_render_post_grid( $atts, $content = null ) {
 
 	// Shortcode Parameters
 	$atts = shortcode_atts(array(
-		'limit' 				=> 20,
+		'limit' 				=> bdp_get_default_param( 'default_post_limit', 20 ),
 		'category' 				=> array(),
-		'grid' 					=> 3,
-		'design' 				=> 'design-1',
+		'grid' 					=> bdp_get_default_param( 'default_grid_cols', 3 ),
+		'design' 				=> bdp_get_default_param( 'default_design', 'design-1' ),
 		'show_author' 			=> 'true',
 		'show_tags'				=> 'true',
 		'show_comments'			=> 'true',

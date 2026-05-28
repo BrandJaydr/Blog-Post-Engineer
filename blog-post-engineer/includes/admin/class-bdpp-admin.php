@@ -36,25 +36,38 @@ class BDP_Admin {
 	 */
 	function bdp_register_menu() {
 
-		// Main Menu
-		add_menu_page( __('Blog Post Engineer', 'blog-post-engineer'), __('Blog Post Engineer', 'blog-post-engineer'), 'manage_options', 'bdpp-layouts', array($this, 'bdp_plugin_all_layouts'), 'dashicons-editor-bold' );
+		// GG Ecosystem Admin Menu Integration
+		if ( function_exists( 'gg_register_admin_menu' ) ) {
+			// Register as GG submenu when GG core is present
+			gg_register_admin_menu( 'gg-blogging-engine', array(
+				'page_title' => __('Blog Post Engineer', 'blog-post-engineer'),
+				'menu_title' => __('Blog Post Engineer', 'blog-post-engineer'),
+				'capability' => 'manage_options',
+				'menu_slug' => 'bdpp-settings',
+				'callback' => array($this, 'bdp_plugin_settings'),
+			));
+		} else {
+			// Fallback: Standalone BDP admin menu when GG core is absent
+			// Main Menu
+			add_menu_page( __('Blog Post Engineer', 'blog-post-engineer'), __('Blog Post Engineer', 'blog-post-engineer'), 'manage_options', 'bdpp-layouts', array($this, 'bdp_plugin_all_layouts'), 'dashicons-editor-bold' );
 
-		// All Layouts Page
-		add_submenu_page( 'bdpp-layouts', __('All Layouts - Blog Post Engineer', 'blog-post-engineer'), __('All Layouts', 'blog-post-engineer'), 'manage_options', 'bdpp-layouts', array($this, 'bdp_plugin_all_layouts') );
+			// All Layouts Page
+			add_submenu_page( 'bdpp-layouts', __('All Layouts - Blog Post Engineer', 'blog-post-engineer'), __('All Layouts', 'blog-post-engineer'), 'manage_options', 'bdpp-layouts', array($this, 'bdp_plugin_all_layouts') );
 
-		// Add New Layout Page
-		add_submenu_page( 'bdpp-layouts', __('Layout - Blog Post Engineer', 'blog-post-engineer'), __('Add New Layout', 'blog-post-engineer'), 'manage_options', 'bdpp-layout', array($this, 'bdp_plugin_add_layout') );
+			// Add New Layout Page
+			add_submenu_page( 'bdpp-layouts', __('Layout - Blog Post Engineer', 'blog-post-engineer'), __('Add New Layout', 'blog-post-engineer'), 'manage_options', 'bdpp-layout', array($this, 'bdp_plugin_add_layout') );
 
-		// Shortcode Builder
-		add_submenu_page( 'bdpp-layouts', __('Shortcode Builder - Blog Post Engineer', 'blog-post-engineer'), __('Shortcode Builder', 'blog-post-engineer'), 'manage_options', 'bdpp-shrt-builder', array($this, 'bdp_shortcode_builder') );
+			// Shortcode Builder
+			add_submenu_page( 'bdpp-layouts', __('Shortcode Builder - Blog Post Engineer', 'blog-post-engineer'), __('Shortcode Builder', 'blog-post-engineer'), 'manage_options', 'bdpp-shrt-builder', array($this, 'bdp_shortcode_builder') );
 
-		// Style Manager
-		add_submenu_page( 'bdpp-layouts', __('Style Manager - Blog Post Engineer', 'blog-post-engineer'), __('Style Manager', 'blog-post-engineer'), 'manage_options', 'bdpp-styles', array($this, 'bdp_style_manager_page') );
+			// Style Manager
+			add_submenu_page( 'bdpp-layouts', __('Style Manager - Blog Post Engineer', 'blog-post-engineer'), __('Style Manager', 'blog-post-engineer'), 'manage_options', 'bdpp-styles', array($this, 'bdp_style_manager_page') );
 
-		// Setting Page
-		add_submenu_page( 'bdpp-layouts', __('Blog Post Engineer', 'blog-post-engineer'), __('Settings', 'blog-post-engineer'), 'manage_options', 'bdpp-settings', array($this, 'bdp_plugin_settings') );
+			// Setting Page
+			add_submenu_page( 'bdpp-layouts', __('Blog Post Engineer', 'blog-post-engineer'), __('Settings', 'blog-post-engineer'), 'manage_options', 'bdpp-settings', array($this, 'bdp_plugin_settings') );
+		}
 
-		// Shortcode Preview
+		// Shortcode Preview (always registered as hidden page)
 		add_submenu_page( '', __('Shortcode Preview - Blog Post Engineer', 'blog-post-engineer'), __('Shortcode Preview', 'blog-post-engineer'), 'manage_options', 'bdpp-shortcode-preview', array($this, 'bdp_shortcode_preview_page') );
 	}
 
