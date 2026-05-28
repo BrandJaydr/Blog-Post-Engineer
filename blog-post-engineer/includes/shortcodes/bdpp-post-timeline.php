@@ -25,10 +25,13 @@ function bdp_render_timeline( $atts ) {
 		'taxonomy'          => 'category',
 		'orderby'           => 'date',
 		'order'             => 'DESC',
+		'post_type'         => 'post',
+		'tag'               => '',
 		'show_author'       => true,
 		'show_date'         => true,
 		'show_category'     => true,
 		'show_content'      => true,
+		'show_tags'         => 'true',
 		'show_read_more'    => true,
 		'read_more_text'    => __( 'Read More', 'blog-designer-pack' ),
 		'content_words_limit'=> 20,
@@ -51,11 +54,12 @@ function bdp_render_timeline( $atts ) {
 	$atts['show_category']      = bdp_string_to_bool( $atts['show_category'] );
 	$atts['show_content']       = bdp_string_to_bool( $atts['show_content'] );
 	$atts['show_read_more']     = bdp_string_to_bool( $atts['show_read_more'] );
+	$atts['show_tags']         = bdp_string_to_bool( $atts['show_tags'] );
 	$atts['link_behaviour']     = in_array( $atts['link_behaviour'], array( 'self', 'new' ) ) ? $atts['link_behaviour'] : 'self';
 
 	// WP Query Parameters
 	$args = array(
-		'post_type'           => 'post',
+		'post_type'           => $atts['post_type'],
 		'post_status'         => array('publish'),
 		'orderby'             => $atts['orderby'],
 		'order'               => $atts['order'],
@@ -71,6 +75,15 @@ function bdp_render_timeline( $atts ) {
 				'terms'    => $atts['category'],
 				'field'    => is_numeric( $atts['category'] ) ? 'term_id' : 'slug',
 			)
+		);
+	}
+
+	// Tag Parameter
+	if ( $atts['tag'] ) {
+		$args['tax_query'][] = array(
+			'taxonomy' => 'post_tag',
+			'terms'    => array( $atts['tag'] ),
+			'field'    => ( is_numeric( $atts['tag'] ) ) ? 'term_id' : 'slug',
 		);
 	}
 
