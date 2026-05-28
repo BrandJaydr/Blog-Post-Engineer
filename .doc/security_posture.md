@@ -58,9 +58,19 @@ We enforce strict data validation boundaries between the database and the render
 
 ---
 
-## 3. Freemius SDK Boundaries (Deactivation & Clean-up)
+## 3. Freemius SDK Status (Removed)
 
-Freemius is carried inside the standard codebase as inert code. To minimize vulnerability surfaces and clean up the administrative experience:
-1.  **Stripping Notices**: Upgrade messages (`bdpp_premium_admin_messages()`) and premium banners are disabled.
-2.  **No Core Logic Reliance**: The core querying, templates, and script enqueues operate completely free of Freemius API hooks.
-3.  **Future Fork Clean-up**: In Track D, we will completely sever the Freemius SDK file directories from active execution to guarantee 100% telemetry-free operation.
+The Freemius SDK has been **surgically removed** from the codebase:
+1.  The `freemius.php` entry point file was deleted.
+2.  All `include_once( BDP_DIR . '/freemius.php' )` calls were commented out in the main plugin file.
+3.  The Freemius directory is no longer present in the plugin.
+4.  The core querying, templates, and script enqueues operate independently with zero Freemius dependency.
+5.  No telemetry, upgrade prompts, or external pings originate from this plugin.
+
+## 4. Known Security Debt
+
+### 4A. Filter Nonce is Public (Informational)
+The `bdpp_filter_posts` Ajax action is registered with both `wp_ajax_` (authenticated) and `wp_ajax_nopriv_` (unauthenticated) hooks. The nonce (`bdpp_filter_nonce`) is exposed to all visitors via the global `Bdpp` JS object. This means the endpoint is effectively public — the nonce provides no access control barrier. This is acceptable for a read-only post filter endpoint but should be noted.
+
+### 4B. Post Type Whitelist Missing in Ajax Handler
+The `bdpp_filter_posts()` handler accepts `post_type` from user-supplied JSON with only `sanitize_text_field()` — no whitelist validation against registered public post types. A compromised session with XSS could enumerate private CPT content. Recommended fix: whitelist against `bdp_get_post_types()`.
