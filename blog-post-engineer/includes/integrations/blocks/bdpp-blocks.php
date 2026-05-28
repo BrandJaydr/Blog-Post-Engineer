@@ -16,8 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function bdp_block_init() {
 
-	// Registers block.json
-	$layout_block = register_block_type( __DIR__ . '/build/bdpp-layout/' );
+	// Registers block.json — guard against missing build directory
+	$block_dir = __DIR__ . '/build/bdpp-layout';
+	if ( ! file_exists( $block_dir . '/block.json' ) ) {
+		return;
+	}
+	$layout_block = register_block_type( $block_dir . '/' );
 
 	// Localize the auto-registered editor script handle
 	if ( $layout_block && ! empty( $layout_block->editor_script_handles ) ) {
