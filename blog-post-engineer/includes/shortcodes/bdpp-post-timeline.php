@@ -54,6 +54,7 @@ function bdp_render_timeline( $atts ) {
 	$atts['show_category']      = bdp_string_to_bool( $atts['show_category'] );
 	$atts['show_content']       = bdp_string_to_bool( $atts['show_content'] );
 	$atts['show_read_more']     = bdp_string_to_bool( $atts['show_read_more'] );
+	$atts['show_tags']         = bdp_string_to_bool( $atts['show_tags'] );
 	$atts['link_behaviour']     = in_array( $atts['link_behaviour'], array( 'self', 'new' ) ) ? $atts['link_behaviour'] : 'self';
 
 	// WP Query Parameters
