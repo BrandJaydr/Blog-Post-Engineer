@@ -66,6 +66,7 @@ function bdp_settings_tab() {
 	$settings_arr	= array(
 							'welcome'	=> __('Welcome', 'blog-designer-pack'),
 							'general'	=> __('General', 'blog-designer-pack'),
+							'defaults'	=> __('Defaults', 'blog-designer-pack'),
 							'trending'	=> __('Trending Post', 'blog-designer-pack'),
 							'taxonomy'	=> __('Taxonomy', 'blog-designer-pack'),
 							'sharing'	=> __('Sharing', 'blog-designer-pack'),
@@ -97,6 +98,9 @@ function bdp_default_settings() {
 					'custom_css'			=> '',
 					'post_content_fix'		=> 1,
 					'disable_font_awsm_css'	=> 0,
+					'default_grid_cols'		=> 3,
+					'default_design'		=> 'design-1',
+					'default_post_limit'	=> 10,
 				);
 
 	return $bdpp_options;
@@ -197,3 +201,28 @@ function bdp_validate_misc_settings( $input ) {
 	return $input;
 }
 add_filter( 'bdpp_validate_settings_misc', 'bdp_validate_misc_settings', 9, 1 );
+
+/**
+ * Handles to validate Defaults tab settings
+ *
+ * @since 4.0.11
+ */
+function bdp_validate_defaults_settings( $input ) {
+
+	$input['default_grid_cols'] = isset( $input['default_grid_cols'] ) ? intval( $input['default_grid_cols'] ) : 3;
+	$input['default_design']    = isset( $input['default_design'] ) ? sanitize_text_field( $input['default_design'] ) : 'design-1';
+	$input['default_post_limit'] = isset( $input['default_post_limit'] ) ? intval( $input['default_post_limit'] ) : 10;
+
+	// Validate grid columns is between 1 and 4
+	if ( $input['default_grid_cols'] < 1 || $input['default_grid_cols'] > 4 ) {
+		$input['default_grid_cols'] = 3;
+	}
+
+	// Validate post limit is between 1 and 100
+	if ( $input['default_post_limit'] < 1 || $input['default_post_limit'] > 100 ) {
+		$input['default_post_limit'] = 10;
+	}
+
+	return $input;
+}
+add_filter( 'bdpp_validate_settings_defaults', 'bdp_validate_defaults_settings', 9, 1 );

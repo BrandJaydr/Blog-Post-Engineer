@@ -20,6 +20,8 @@
 	/* Load More */
 	bdpp_load_more_pagi();
 
+	/* Infinite Scroll */
+	bdpp_infinite_scroll();
 	/* Category Filter */
 	$(document).on('click', '.bdpp-filter-btn', function() {
 		var btn       = $(this);
@@ -306,5 +308,74 @@ function bdpp_load_more_pagi() {
 			});
 		});
 		current_obj.addClass('bdpp-pagi-initialized');
+	});
+}
+
+/* Infinite Scroll */
+function bdpp_infinite_scroll() {
+	if ( typeof IntersectionObserver === 'undefined' ) {
+		return;
+	}
+
+	jQuery('.bdpp-infinite-sentinel').each(function() {
+		var sentinel = this;
+		var $sentinel = jQuery(sentinel);
+		var paged = parseInt( $sentinel.data('paged') );
+		var max = parseInt( $sentinel.data('max') );
+		var shrt_param = $sentinel.attr('data-conf');
+		var nonce = $sentinel.attr('data-nonce');
+		var $paging = $sentinel.closest('.bdpp-paging');
+		var $wrap = $sentinel.closest('.bdpp-post-data-wrap');
+		var $inner = $wrap.find('.bdpp-post-data-inr-wrap');
+		var masonry = $wrap.hasClass('bdpp-post-masonry-wrap');
+		var loading = false;
+
+		var observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if ( entry.isIntersecting && ! loading && paged < max ) {
+					loading = true;
+					paged++;
+					$sentinel.find('.bdpp-infinite-loader').addClass('bdpp-infinite-loading');
+
+					jQuery.post(Bdpp.ajax_url, {
+						action: 'bdp_load_more_posts',
+						shrt_param: shrt_param,
+						nonce: nonce,
+						paged: paged,
+						count: 0
+					}, function(result) {
+						if ( result.status == 1 && result.data != '' ) {
+							var $content = jQuery(result.data);
+
+							if ( masonry ) {
+								$content.hide();
+								$inner.append($content).imagesLoaded(function() {
+									$content.show();
+									$inner.masonry('appended', $content);
+								});
+							} else {
+								$inner.append(result.data);
+							}
+
+							$sentinel.data('paged', paged);
+							if ( paged >= max ) {
+								$sentinel.remove();
+								observer.disconnect();
+							}
+						} else {
+							$sentinel.remove();
+							observer.disconnect();
+						}
+						$sentinel.find('.bdpp-infinite-loader').removeClass('bdpp-infinite-loading');
+						loading = false;
+					}).fail(function() {
+						$sentinel.find('.bdpp-infinite-loader').removeClass('bdpp-infinite-loading');
+						loading = false;
+					});
+				}
+			});
+		}, { rootMargin: '200px' });
+
+		observer.observe(sentinel);
 	});
 }

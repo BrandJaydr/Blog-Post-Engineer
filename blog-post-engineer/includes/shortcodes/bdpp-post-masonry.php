@@ -45,6 +45,7 @@ function bdp_render_post_masonry( $atts, $content = null ) {
 		'taxonomy'				=> 'category',
 		'tag'					=> '',
 		'link_behaviour'		=> 'self',
+		'infinite_scroll'		=> 'false',
 		'custom_param_1'		=> '',	// Custom Param Passed Just for Developer
 		'custom_param_2'		=> '',
 		), $atts, 'bdp_masonry');
@@ -79,6 +80,7 @@ function bdp_render_post_masonry( $atts, $content = null ) {
 	$atts['taxonomy'] 				= ! empty( $atts['taxonomy'] ) ? sanitize_text_field( $atts['taxonomy'] ) : 'category';
 	$atts['tag'] 					= ! empty( $atts['tag'] ) ? sanitize_text_field( $atts['tag'] ) : '';
 	$atts['link_behaviour']			= ( $atts['link_behaviour'] === 'new' ) ? 'new' : 'self';
+	$atts['infinite_scroll'] 		= bdp_string_to_bool( $atts['infinite_scroll'] );
 
 	// Enqueue required scripts
 	wp_enqueue_script( 'jquery' );

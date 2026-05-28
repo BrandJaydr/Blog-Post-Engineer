@@ -231,6 +231,15 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 		 */
 		public function bdp_plugins_loaded() {
 
+			// GG Ecosystem Registration
+			if ( function_exists('gg_register_module') ) {
+				gg_register_module('gg-blogging-engine', array(
+					'version'      => BDP_VERSION,
+					'capabilities' => array('post_grid', 'post_slider', 'category_filter', 'post_list', 'post_masonry', 'post_carousel', 'post_ticker'),
+					'label'        => 'GG Blogging Engine',
+				));
+			}
+
 			// Visual Composer Page Builder Support
 			if( class_exists('Vc_Manager') ) {
 				include_once( BDP_DIR . '/includes/integrations/wpbakery/wpbakery.php' );
