@@ -164,8 +164,9 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 			require_once( BDP_DIR . '/includes/shortcodes/bdpp-post-slider.php' );
 			require_once( BDP_DIR . '/includes/shortcodes/bdpp-post-carousel.php' );
 			require_once( BDP_DIR . '/includes/shortcodes/bdpp-post-masonry.php' );
-			require_once( BDP_DIR . '/includes/shortcodes/bdpp-post-ticker.php' );
-			require_once( BDP_DIR . '/includes/shortcodes/bdpp-shrt-tmpl.php' );
+		require_once( BDP_DIR . '/includes/shortcodes/bdpp-post-ticker.php' );
+		require_once( BDP_DIR . '/includes/shortcodes/bdpp-post-timeline.php' );
+		require_once( BDP_DIR . '/includes/shortcodes/bdpp-shrt-tmpl.php' );
 
 			// Shortcode Supports
 			include_once( BDP_DIR . '/includes/admin/shortcode-support/shortcode-fields.php' );
@@ -189,7 +190,8 @@ if ( ! class_exists( 'Blog_Designer_Pack_Lite' ) )  :
 				include_once( BDP_DIR . '/includes/admin/settings/bdpp-sharing-settings.php' );
 				include_once( BDP_DIR . '/includes/admin/settings/bdpp-css-settings.php' );
 				include_once( BDP_DIR . '/includes/admin/settings/bdpp-misc-settings.php' );
-				include_once( BDP_DIR . '/includes/admin/settings/bdpp-pro-settings.php' );
+		include_once( BDP_DIR . '/includes/admin/settings/bdpp-pro-settings.php' );
+		include_once( BDP_DIR . '/includes/admin/settings/bdpp-defaults-settings.php' );
 			}
 
 			// Plugin installation file
