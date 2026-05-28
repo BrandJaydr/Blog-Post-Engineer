@@ -170,15 +170,10 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_sub_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -189,7 +184,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'		=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -296,15 +290,10 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -314,7 +303,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Cat Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'cat_taxonomy',
 											'class'			=> 'bdpp-cat-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a category taxonomy just to display categories as meta information.', 'blog-designer-pack' ),
 										),
@@ -323,7 +311,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Tag Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'tag_taxonomy',
 											'class'			=> 'bdpp-tag-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a tag taxonomy just to display tags as meta information.', 'blog-designer-pack' ),
 										),
@@ -332,7 +319,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -344,7 +330,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -355,7 +340,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
-											'premium'		=> true,
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
@@ -365,7 +349,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -374,7 +357,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -383,7 +365,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -392,7 +373,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),
@@ -404,14 +384,12 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																),
-											'premium'		=> true,
 											'desc' 			=> __( 'Display sticky posts. This only effects the frontend.', 'blog-designer-pack' ) . '<label title="'.esc_attr__("Note: Sticky post only be displayed at front side. In preview mode sticky post will not be displayed.", 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -423,7 +401,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),
@@ -475,17 +452,12 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'prev_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Pagination previous button text. Leave it empty for default.', 'blog-designer-pack' ),
-											'premium'		=> true,
 										),
 										array(
 											'type' 			=> 'text',
@@ -493,7 +465,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'name' 			=> 'next_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Pagination next button text. Leave it empty for default.', 'blog-designer-pack' ),
-											'premium'		=> true,
 										)
 									)
 			),
@@ -514,7 +485,6 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',
@@ -779,17 +749,12 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter slider speed.', 'blog-designer-pack' ),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Slider options like Show Thumbnail etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'prev_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Slider previous button text.', 'blog-designer-pack' ),
-											'premium'		=> true,
 										),
 										array(
 											'type' 			=> 'text',
@@ -797,13 +762,11 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'name' 			=> 'next_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Slider next button text.', 'blog-designer-pack' ),
-											'premium'		=> true,
 										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Autoplay Pause on Hover', 'blog-designer-pack' ),
 											'name' 			=> 'autoplay_hover_pause',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -814,7 +777,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Slider Auto Height', 'blog-designer-pack' ),
 											'name' 			=> 'auto_height',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -826,14 +788,12 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Slider Start Position', 'blog-designer-pack' ),
 											'name' 			=> 'start_position',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Enter slide number to start from that.', 'blog-designer-pack' ),
 										),
 										array(
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Slide Margin', 'blog-designer-pack' ),
 											'name' 			=> 'slide_margin',
-											'premium'		=> true,
 											'value' 		=> 5,
 											'desc' 			=> __( 'Slide margin.', 'blog-designer-pack' ),
 										),
@@ -841,7 +801,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Slider Stage Padding', 'blog-designer-pack' ),
 											'name' 			=> 'stage_padding',
-											'premium'		=> true,
 											'value' 		=> 0,
 											'desc' 			=> __( 'Enter slider stage padding. A partial slide will be visible at both the end.', 'blog-designer-pack' ),
 										),
@@ -849,7 +808,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Thumbnail', 'blog-designer-pack' ),
 											'name' 			=> 'show_thumbnail',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -860,7 +818,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Thumbnail Image', 'blog-designer-pack' ),
 											'name' 			=> 'show_thumbnail_img',
-											'premium'		=> true,
 											'value' 		=> array( 
 																'true'	=> __( 'True', 'blog-designer-pack' ),
 																'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -871,7 +828,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Thumbnail Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_thumbnail_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																'false'	=> __( 'False', 'blog-designer-pack' ),
 																'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -882,7 +838,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Thumbnail Date', 'blog-designer-pack' ),
 											'name' 			=> 'show_thumbnail_date',
-											'premium'		=> true,
 											'value' 		=> array( 
 																'false'	=> __( 'False', 'blog-designer-pack' ),
 																'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -895,14 +850,12 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'name' 			=> 'thumbnail',
 											'value' 		=> 7,
 											'min'			=> 1,
-											'premium'		=> true,
 											'desc' 			=> __( 'Enter number of thumbnails. The ideal value should be 7.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: Number of thumbnails will adjust according to responsive layout mode.', 'blog-designer-pack').'"> [?]</label>',											
 										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'URL Hash Listner', 'blog-designer-pack' ),
 											'name' 			=> 'url_hash_listener',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -913,7 +866,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Lazyload', 'blog-designer-pack' ),
 											'name' 			=> 'lazyload',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1025,15 +977,10 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_sub_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -1044,7 +991,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'	=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -1134,15 +1080,10 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -1152,7 +1093,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Cat Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'cat_taxonomy',
 											'class'			=> 'bdpp-cat-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a category taxonomy just to display categories as meta information.', 'blog-designer-pack' ),
 										),
@@ -1161,7 +1101,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Tag Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'tag_taxonomy',
 											'class'			=> 'bdpp-tag-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a tag taxonomy just to display tags as meta information.', 'blog-designer-pack' ),
 										),
@@ -1171,7 +1110,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -1183,7 +1121,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -1195,7 +1132,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
 										),
@@ -1204,7 +1140,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -1213,7 +1148,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -1222,7 +1156,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -1231,7 +1164,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),
@@ -1240,7 +1172,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sticky Posts', 'blog-designer-pack' ),
 											'name' 			=> 'sticky_posts',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1251,7 +1182,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -1264,7 +1194,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),										
 									)
@@ -1273,7 +1202,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 			// Social Sharing
 			'social_sharing' => array(
 					'title'		=> __('Social Sharing', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type'	=> 'dropdown',
@@ -1287,7 +1215,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',
@@ -1439,7 +1366,6 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 			// Style Manager
 			'style_manager' => array(
 					'title'		=> __('Style Manager', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 		=> 'dropdown',
@@ -1567,17 +1493,12 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter slider speed.', 'blog-designer-pack' ),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Slider options like Center Mode, Slide Margin etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'prev_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Slider previous button text.', 'blog-designer-pack' ),
-											'premium'		=> true,
 										),
 										array(
 											'type' 			=> 'text',
@@ -1585,13 +1506,11 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'name' 			=> 'next_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Slider next button text.', 'blog-designer-pack' ),
-											'premium'		=> true,
 										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Autoplay Pause on Hover', 'blog-designer-pack' ),
 											'name' 			=> 'autoplay_hover_pause',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -1602,7 +1521,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Slider Center Mode', 'blog-designer-pack' ),
 											'name' 			=> 'center',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1613,7 +1531,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Slider Auto Height', 'blog-designer-pack' ),
 											'name' 			=> 'auto_height',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1624,7 +1541,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Slider Start Position', 'blog-designer-pack' ),
 											'name' 			=> 'start_position',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Enter slide number to start from that.', 'blog-designer-pack' ),
 										),
@@ -1632,7 +1548,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Slide Margin', 'blog-designer-pack' ),
 											'name' 			=> 'slide_margin',
-											'premium'		=> true,
 											'value' 		=> 5,
 											'desc' 			=> __( 'Slide margin.', 'blog-designer-pack' ),
 										),
@@ -1640,7 +1555,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Slider Stage Padding', 'blog-designer-pack' ),
 											'name' 			=> 'stage_padding',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Enter slider stage padding. A partial slide will be visible at both the end.', 'blog-designer-pack' ),
 										),
@@ -1648,7 +1562,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'URL Hash Listner', 'blog-designer-pack' ),
 											'name' 			=> 'url_hash_listener',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1659,7 +1572,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Lazyload', 'blog-designer-pack' ),
 											'name' 			=> 'lazyload',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1771,15 +1683,10 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_sub_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -1790,7 +1697,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'		=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -1880,15 +1786,10 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),										
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -1897,7 +1798,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Cat Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'cat_taxonomy',
-											'premium'		=> true,
 											'class'			=> 'bdpp-cat-taxonomy-sel',
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a category taxonomy just to display categories as meta information.', 'blog-designer-pack' ),
@@ -1906,7 +1806,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Tag Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'tag_taxonomy',
-											'premium'		=> true,
 											'class'			=> 'bdpp-tag-taxonomy-sel',
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a tag taxonomy just to display tags as meta information.', 'blog-designer-pack' ),
@@ -1916,7 +1815,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -1928,7 +1826,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -1940,7 +1837,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
 										),
@@ -1949,7 +1845,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -1958,7 +1853,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -1967,7 +1861,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -1976,7 +1869,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),
@@ -1984,7 +1876,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sticky Posts', 'blog-designer-pack' ),
 											'name' 			=> 'sticky_posts',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -1995,7 +1886,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -2007,7 +1897,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),
@@ -2018,7 +1907,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 			// Social Sharing
 			'social_sharing' => array(
 					'title'		=> __('Social Sharing', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 	=> 'dropdown',
@@ -2032,7 +1920,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',
@@ -2184,7 +2071,6 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 			// Style Manager
 			'style_manager' => array(
 					'title'		=> __('Style Manager', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 		=> 'dropdown',
@@ -2225,15 +2111,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter an extra CSS class for design customization.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Extra class will be added at top most parent so using extra class you customize your design.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock Height option.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Height', 'blog-designer-pack' ),
 											'name' 			=> 'height',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Enter post image or box height. Leave empty for default.', 'blog-designer-pack' ),
 										),
@@ -2342,15 +2223,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text, Sub Title etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_sub_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -2361,7 +2237,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'		=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -2430,15 +2305,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -2447,7 +2317,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Cat Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'cat_taxonomy',
-											'premium'		=> true,
 											'class'			=> 'bdpp-cat-taxonomy-sel',
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a category taxonomy just to display categories as meta information.', 'blog-designer-pack' ),
@@ -2457,7 +2326,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Tag Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'tag_taxonomy',
 											'class'			=> 'bdpp-tag-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a tag taxonomy just to display tags as meta information.', 'blog-designer-pack' ),
 										),
@@ -2469,7 +2337,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> 'bdpp-ajax-select2 bdpp-category-sel',
 											'multi'			=> true,
 											'ajax'			=> true,
-											'premium'		=> true,
 											'ajax_action'	=> 'bdpp_category_sugg',
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to display category wise posts.', 'blog-designer-pack' ),
@@ -2479,7 +2346,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -2489,7 +2355,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 										array(
 											'type'			=> 'dropdown',
 											'class'			=> '',
-											'premium'		=> true,
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
 											'value'			=> array( 
@@ -2503,7 +2368,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
 										),
@@ -2512,7 +2376,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -2521,7 +2384,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -2530,7 +2392,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -2539,7 +2400,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),
@@ -2548,7 +2408,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sticky Posts', 'blog-designer-pack' ),
 											'name' 			=> 'sticky_posts',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -2559,7 +2418,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -2571,7 +2429,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),
@@ -2623,16 +2480,11 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'prev_text',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Pagination previous button text. Leave it empty for default.', 'blog-designer-pack' ),
 										),
 										array(
@@ -2640,7 +2492,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Next Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'next_text',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Pagination next button text. Leave it empty for default.', 'blog-designer-pack' ),
 										)
 									)
@@ -2649,7 +2500,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 			// Social Sharing
 			'social_sharing' => array(
 					'title'		=> __('Social Sharing', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 	=> 'dropdown',
@@ -2663,7 +2513,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',
@@ -2872,7 +2721,6 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 			// Style Manager
 			'style_manager' => array(
 					'title'		=> __('Style Manager', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 		=> 'dropdown',
@@ -3025,15 +2873,10 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_sub_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -3044,7 +2887,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'		=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -3125,15 +2967,10 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -3143,7 +2980,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Cat Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'cat_taxonomy',
 											'class'			=> 'bdpp-cat-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a category taxonomy just to display categories as meta information.', 'blog-designer-pack' ),
 										),
@@ -3152,7 +2988,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Tag Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'tag_taxonomy',
 											'class'			=> 'bdpp-tag-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a tag taxonomy just to display tags as meta information.', 'blog-designer-pack' ),
 										),
@@ -3161,7 +2996,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -3173,7 +3007,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -3185,7 +3018,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
 										),
@@ -3194,7 +3026,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -3203,7 +3034,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -3212,7 +3042,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -3221,7 +3050,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),
@@ -3230,7 +3058,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sticky Posts', 'blog-designer-pack' ),
 											'name' 			=> 'sticky_posts',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -3241,7 +3068,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -3253,7 +3079,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),
@@ -3305,16 +3130,11 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'prev_text',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Pagination previous button text. Leave it empty for default.', 'blog-designer-pack' ),
 										),
 										array(
@@ -3322,7 +3142,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Next Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'next_text',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Pagination next button text. Leave it empty for default.', 'blog-designer-pack' ),
 										),
 									)
@@ -3331,7 +3150,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 			// Social Sharing
 			'social_sharing' => array(
 					'title'		=> __('Social Sharing', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 	=> 'dropdown',
@@ -3345,7 +3163,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'		=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',
@@ -3497,7 +3314,6 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 			// Style Manager
 			'style_manager' => array(
 					'title'		=> __('Style Manager', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 		=> 'dropdown',
@@ -3567,15 +3383,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter an extra CSS class for design customization.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Extra class will be added at top most parent so using extra class you customize your design.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock to enable Display Effect.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Effect', 'blog-designer-pack' ),
 											'name' 			=> 'effect',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'effect-1'	=> __( 'Effect 1', 'blog-designer-pack' ),
 																	'effect-2'	=> __( 'Effect 2', 'blog-designer-pack' ),
@@ -3693,15 +3504,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
 											'name' 			=> 'show_sub_title',
-											'premium'		=> true,
 											'value' 		=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -3712,7 +3518,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'	=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -3793,15 +3598,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -3811,7 +3611,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Cat Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'cat_taxonomy',
 											'class'			=> 'bdpp-cat-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a category taxonomy just to display categories as meta information.', 'blog-designer-pack' ),
 										),
@@ -3820,7 +3619,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Tag Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'tag_taxonomy',
 											'class'			=> 'bdpp-tag-taxonomy-sel',
-											'premium'		=> true,
 											'value' 		=> array( '' => __('Select Taxonomy', 'blog-designer-pack') ),
 											'desc' 			=> __( 'Choose a tag taxonomy just to display tags as meta information.', 'blog-designer-pack' ),
 										),
@@ -3829,7 +3627,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -3841,7 +3638,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -3853,7 +3649,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
 										),
@@ -3862,7 +3657,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -3871,7 +3665,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -3880,7 +3673,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -3889,7 +3681,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),
@@ -3898,7 +3689,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sticky Posts', 'blog-designer-pack' ),
 											'name' 			=> 'sticky_posts',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -3909,7 +3699,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -3922,7 +3711,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
 											'value' 		=> '',
-											'premium'		=> true,
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),
 									)
@@ -3973,17 +3761,12 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
 											'name' 			=> 'prev_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Pagination previous button text. Leave it empty for default.', 'blog-designer-pack' ),
-											'premium'		=> true,
 											'dependency' 	=> array(
 																'element' 				=> 'pagination_type',
 																'value_not_equal_to' 	=> array( 'load-more', 'infinite' ),
@@ -3995,7 +3778,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'name' 			=> 'next_text',
 											'value' 		=> '',
 											'desc' 			=> __( 'Pagination next button text. Leave it empty for default.', 'blog-designer-pack' ),
-											'premium'		=> true,
 											'dependency' 	=> array(
 																'element' 				=> 'pagination_type',
 																'value_not_equal_to' 	=> array( 'load-more', 'infinite' ),
@@ -4007,7 +3789,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 			// Social Sharing
 			'social_sharing' => array(
 					'title'		=> __('Social Sharing', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 	=> 'dropdown',
@@ -4021,7 +3802,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',
@@ -4173,7 +3953,6 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 			// Style Manager
 			'style_manager' => array(
 					'title'		=> __('Style Manager', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=> array(
 										array(
 											'type' 		=> 'dropdown',
@@ -4216,15 +3995,10 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 												'desc' 			=> __( 'Enter an extra CSS class for design customization.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Extra class will be added at top most parent so using extra class you customize your design.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Ticker options like Position, Height etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),										
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Position Of Ticker', 'blog-designer-pack' ),
 											'name' 			=> 'position',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'auto' 				=> __( 'Auto', 'blog-designer-pack' ),
 																	'fixed-bottom' 		=>  __( 'Fixed Bottom', 'blog-designer-pack' ),
@@ -4239,14 +4013,12 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'name' 			=> 'height',
 											'value' 		=> 40,
 											'refresh_time'	=> 1000,
-											'premium'		=> true,
 											'desc' 			=> __( 'Set height of the ticker.', 'blog-designer-pack' ),
 										),
 										array(
 											'type'		=> 'dropdown',
 											'heading' 	=> __( 'Show Title In Mobile', 'blog-designer-pack' ),
 											'name' 		=> 'show_title_in_mobile',
-											'premium'	=> true,
 											'value' 	=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -4257,7 +4029,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Featured Image', 'blog-designer-pack' ),
 											'name' 			=> 'show_feat_image',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -4268,7 +4039,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Featured Image Size', 'blog-designer-pack' ),
 											'name' 			=> 'media_size',
-											'premium'		=> true,
 											'value' 		=> 'thumbnail',
 											'desc' 			=> __( 'Choose WordPress registered image size. e.g.', 'blog-designer-pack' ).' bdpp-medium, thumbnail, medium, large, full.',											
 										),
@@ -4276,7 +4046,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 		=> 'dropdown',
 											'heading' 	=> __( 'Post Link Target', 'blog-designer-pack' ),
 											'name'		=> 'link_behaviour',
-											'premium'	=> true,
 											'value' 	=> array(
 																'self'	=> __( 'Same Tab', 'blog-designer-pack' ),
 																'new'	=> __( 'New Tab', 'blog-designer-pack' ),
@@ -4328,23 +4097,17 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 										),
 										
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock to get more Ticker Effects like Fade, Typography, Continuous Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Continuous Scroll Speed', 'blog-designer-pack' ),
 											'name' 			=> 'scroll_speed',
 											'value' 		=> 2,
-											'premium'		=> true,
 											'desc' 			=> __( 'Set continuous scroll speed of the ticker', 'blog-designer-pack' )
 										),
 										array(
 											'type'		=> 'dropdown',
 											'heading' 	=> __( 'Show Arrows', 'blog-designer-pack' ),
 											'name' 		=> 'arrows',
-											'premium'		=> true,
 											'value' 	=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -4355,7 +4118,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type'		=> 'dropdown',
 											'heading' 	=> __( 'Show Pause Button', 'blog-designer-pack' ),
 											'name' 		=> 'pause_button',
-											'premium'		=> true,
 											'value' 	=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -4366,7 +4128,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type'		=> 'dropdown',
 											'heading' 	=> __( 'Pause On Hover', 'blog-designer-pack' ),
 											'name' 		=> 'hover_stop',
-											'premium'	=> true,
 											'value' 	=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -4377,7 +4138,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type'		=> 'dropdown',
 											'heading' 	=> __( 'Hide Control In Mobile', 'blog-designer-pack' ),
 											'name' 		=> 'hide_ctrl_in_mobile',
-											'premium'		=> true,
 											'value' 	=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -4467,15 +4227,10 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock more Query options like Category Operator, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
 											'name' 			=> 'taxonomy',
-											'premium'		=> true,
 											'value' 		=> bdp_get_post_type_taxonomy( BDP_POST_TYPE ),
 											'class'			=> 'bdpp-taxonomy-sel',
 											'desc' 			=> __( 'Choose registered taxonomy if you want to display category wise post.', 'blog-designer-pack' ),
@@ -4485,7 +4240,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Category Operator', 'blog-designer-pack'),
 											'name'			=> 'category_operator',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'IN'	=> __( 'IN', 'blog-designer-pack' ),
 																	'AND'	=> __( 'AND', 'blog-designer-pack' ),
@@ -4497,7 +4251,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'class'			=> '',
 											'heading'		=> __( 'Display Child Category Posts', 'blog-designer-pack'),
 											'name'			=> 'include_cat_child',
-											'premium'		=> true,
 											'value'			=> array( 
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
@@ -4509,7 +4262,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Category', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_cat',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search category by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose categories to exclude posts of it. Works only if `Category` field is empty.', 'blog-designer-pack' ),
 										),
@@ -4518,7 +4270,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include Post', 'blog-designer-pack' ),
 											'name' 			=> 'posts',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you want to display.', 'blog-designer-pack'),
 										),
@@ -4527,7 +4278,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude Post', 'blog-designer-pack' ),
 											'name' 			=> 'hide_post',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search posts by its name, slug or ID', 'blog-designer-pack' ),
 											'desc' 			=> __('Choose posts which you do not want to display.', 'blog-designer-pack'),
 										),
@@ -4536,7 +4286,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Include By Author', 'blog-designer-pack' ),
 											'name' 			=> 'author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to show posts associated with that.', 'blog-designer-pack' ),
 										),
@@ -4545,7 +4294,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Exclude By Author', 'blog-designer-pack' ),
 											'name' 			=> 'exclude_author',
 											'value' 		=> array('' => __('Select Data', 'blog-designer-pack') ),
-											'premium'		=> true,
 											'search_msg'	=> __( 'Search authors by its name, email or ID', 'blog-designer-pack' ),
 											'desc' 			=> __( 'Choose authors to hide posts associated with that. Works only if `Include Author` field is empty.', 'blog-designer-pack' ),
 										),										
@@ -4553,7 +4301,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sticky Posts', 'blog-designer-pack' ),
 											'name' 			=> 'sticky_posts',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'false'	=> __( 'False', 'blog-designer-pack' ),
 																	'true'	=> __( 'True', 'blog-designer-pack' ),
@@ -4564,7 +4311,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Type', 'blog-designer-pack' ),
 											'name' 			=> 'type',
-											'premium'		=> true,
 											'value' 		=> array(
 																	'' 			=> __( 'Select Type', 'blog-designer-pack' ),
 																	'featured'	=> __( 'Featured', 'blog-designer-pack' ),
@@ -4576,7 +4322,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Query Offset', 'blog-designer-pack' ),
 											'name' 			=> 'query_offset',
-											'premium'		=> true,
 											'value' 		=> '',
 											'desc' 			=> __( 'Skip number of posts from starting.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('e.g. 5 to skip over 5 posts. Note: Do not use limit=-1 and pagination=true with this.', 'blog-designer-pack').'"> [?]</label>',
 										),										
@@ -4620,16 +4365,11 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Set ticker text font color.', 'blog-designer-pack' ),
 										),
 										array(
-											'type'			=> 'info',
-											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
-											'desc'			=> sprintf( __( '%s Unlock to get Ticker Control options.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
-										),
 										array(
 											'type' 			=> 'colorpicker',
 											'heading' 		=> __( 'Control Bg Color', 'blog-designer-pack' ),
 											'name' 			=> 'ctrl_bg_color',
 											'value' 		=> '#f6f6f6',
-											'premium'		=> true,
 											'desc' 			=> __( 'Set control background color.', 'blog-designer-pack' )
 										),
 										array(
@@ -4637,7 +4377,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Control Bg Hover Color', 'blog-designer-pack' ),
 											'name' 			=> 'ctrl_bgh_color',
 											'value' 		=> '#eeeeee',
-											'premium'		=> true,
 											'desc' 			=> __( 'Set control background hover color.', 'blog-designer-pack' )
 										),
 										array(
@@ -4645,7 +4384,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Control Text Color', 'blog-designer-pack' ),
 											'name' 			=> 'ctrl_txt_color',
 											'value' 		=> '#999999',
-											'premium'		=> true,
 											'desc' 			=> __( 'Set control text color.', 'blog-designer-pack' )
 										),
 										array(
@@ -4653,7 +4391,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'heading' 		=> __( 'Control Text Hover Color', 'blog-designer-pack' ),
 											'name' 			=> 'ctrl_txth_color',
 											'value' 		=> '#999999',
-											'premium'		=> true,
 											'desc' 			=> __( 'Set control text hover color.', 'blog-designer-pack' )
 										),
 									)
@@ -4662,7 +4399,6 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 			// Filter Settings
 			'filter' => array(
 					'title'		=> __('Filter', 'blog-designer-pack'),
-					'premium'	=> true,
 					'params'	=>  array(
 										array(
 											'type' 			=> 'dropdown',

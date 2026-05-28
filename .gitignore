@@ -1,6 +1,7 @@
 # WordPress
 *.log
 wp-config.php
+wp-config-corrected.php
 wp-content/advanced-cache.php
 wp-content/backup-db/
 wp-content/backups/
@@ -34,16 +35,15 @@ yarn-error.log
 # Composer
 vendor/
 
-# Build
+# Build artifacts
 dist/
 build/
 *.min.js
 *.min.css
+*.zip
 
-# Memory files
+# Agent AI memory & tool files
 .windsurf/
-
-# Agent CLI tools
 .antigravitycli/
 .cortex/
 .memix/

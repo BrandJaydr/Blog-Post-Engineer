@@ -46,6 +46,7 @@ function bdp_render_post_grid( $atts, $content = null ) {
 		'taxonomy'				=> 'category',
 		'tag'					=> '',
 		'link_behaviour'		=> 'self',
+		'infinite_scroll'		=> 'false',
 		'custom_param_1'		=> '',	// Custom Param Passed Just for Developer
 		'custom_param_2'		=> '',
 	), $atts, 'bdp_post');
@@ -82,7 +83,7 @@ function bdp_render_post_grid( $atts, $content = null ) {
 	$atts['tag'] 					= ! empty( $atts['tag'] ) ? sanitize_text_field( $atts['tag'] ) : '';
 	$atts['link_behaviour']			= ( $atts['link_behaviour'] === 'new' ) ? 'new' : 'self';
 	$atts['filter_cats'] 			= ! empty( $atts['filter_cats'] ) ? array_map('trim', explode(',', $atts['filter_cats'])) : array();
-
+	$atts['infinite_scroll'] 		= bdp_string_to_bool( $atts['infinite_scroll'] );
 	// Pagination parameter
 	if( isset( $_GET['bdpp_page'] ) || $atts['multi_page'] ) {
 		$atts['paged'] = isset( $_GET['bdpp_page'] ) ? $_GET['bdpp_page'] : 1;

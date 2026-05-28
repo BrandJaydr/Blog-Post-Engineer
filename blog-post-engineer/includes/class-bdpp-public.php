@@ -59,8 +59,17 @@ class BDP_Public {
 		$paged				= isset( $_POST['paged'] )				? bdp_clean_number( $_POST['paged'] )	: 1;
 		$count				= isset( $_POST['count'] )				? bdp_clean_number( $_POST['count'], 0, 'number' ) : 0;
 		$query_shrt			= str_replace( 'bdp_', 'bdpp_', $shortcode );
-		$template_dir		= ( 'bdp_post' === $shortcode ) ? 'grid' : 'masonry';
-		$shortcode_designs 	= ( 'bdp_post' === $shortcode ) ? bdp_post_designs() : bdp_post_masonry_designs();
+		// Map shortcode to template directory and design registry
+		if ( 'bdp_post' === $shortcode ) {
+			$template_dir      = 'grid';
+			$shortcode_designs = bdp_post_designs();
+		} elseif ( 'bdp_post_list' === $shortcode ) {
+			$template_dir      = 'list';
+			$shortcode_designs = bdp_post_list_designs();
+		} else {
+			$template_dir      = 'masonry';
+			$shortcode_designs = bdp_post_masonry_designs();
+		}
 		$design 			= ( $design && array_key_exists( trim( $design ), $shortcode_designs ) ) ? trim( $design ) : 'design-1';
 		$atts['design']		= $design;
 		$atts['loop_count'] = 0;

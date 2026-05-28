@@ -15,6 +15,7 @@ This project is a high-fidelity fork of the **Blog Designer Pack** WordPress plu
 - [x] **CRITICAL:** Refactored Ajax handlers in `class-bdpp-public.php` to remove hardcoded 'post' strings.
 - [x] Fixed filter button taxonomy hardcoding in `bdpp-post-grid.php`.
 - [x] Added error feedback for failed Ajax in `bdpp-public.js`.
+- [x] Unlock query parameter UI fields (Taxonomy, Cat Taxonomy, Tag Taxonomy, Category Operator, Display Child Category Posts, Exclude By Category, Include Post, Exclude Post, Include By Author, Exclude By Author, Display Sticky Posts, Display Type, Query Offset).
 
 ### Track B: Layouts & Design
 - [x] Creation of Design-3 (Hover Overlay Grid) - HIGH PRIORITY.
@@ -22,16 +23,20 @@ This project is a high-fidelity fork of the **Blog Designer Pack** WordPress plu
 
 ### Track C: Ajax Infrastructure
 - [x] Expanding Masonry "Load More" logic to Grid views.
-- [ ] Category-specific filtering without page reload.
+- [x] Category-specific filtering without page reload (bdp_filter_posts Ajax handler implemented).
 
 ### Track D: Ecosystem Integration
 - [x] Surgical removal of Freemius SDK telemetry.
 - [x] Plugin rename and rebrand (Blog Post Engineer).
-- [ ] Registration with `GG_Module_Registry`.
+- [x] Registration with `GG_Module_Registry` (added gg_register_module hook in bdp_plugins_loaded).
 
 ### Track E: Admin & UX Improvements
 - [x] Shortcode Generator filter params
-- [ ] Live preview in shortcode builder
+- [x] Unlock Meta & Content premium fields (Show Sub Title, Post Link Target)
+- [x] Unlock Paginations premium fields (Previous/Next Button Text)
+- [x] Unlock Filter section
+- [x] Unlock Slider premium fields (Previous/Next Button Text)
+- [x] Live preview in shortcode builder (fixed nonce verification in shortcode-preview.php)
 - [ ] Settings page defaults
 
 ## Documentation
