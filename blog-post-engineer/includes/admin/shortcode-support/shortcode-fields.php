@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Shortcode Fields for Shortcode Preview 
  *
@@ -170,6 +170,10 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
@@ -290,6 +294,10 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -452,6 +460,10 @@ function bdp_post_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
@@ -749,6 +761,10 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter slider speed.', 'blog-designer-pack' ),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Slider options like Show Thumbnail etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
@@ -977,6 +993,10 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
@@ -1080,6 +1100,10 @@ function bdp_post_slider_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -1493,6 +1517,10 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter slider speed.', 'blog-designer-pack' ),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Slider options like Center Mode, Slide Margin etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
@@ -1683,6 +1711,10 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
@@ -1786,6 +1818,10 @@ function bdp_post_carousel_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),										
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -2111,6 +2147,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter an extra CSS class for design customization.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Extra class will be added at top most parent so using extra class you customize your design.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock Height option.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'number',
 											'heading' 		=> __( 'Height', 'blog-designer-pack' ),
@@ -2223,6 +2263,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text, Sub Title etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
@@ -2305,6 +2349,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -2480,6 +2528,10 @@ function bdp_post_gridbox_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
@@ -2873,6 +2925,10 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
@@ -2967,6 +3023,10 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -3130,6 +3190,10 @@ function bdp_post_list_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
@@ -3383,6 +3447,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Enter an extra CSS class for design customization.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Extra class will be added at top most parent so using extra class you customize your design.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock to enable Display Effect.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Display Effect', 'blog-designer-pack' ),
@@ -3504,6 +3572,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 																),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Meta & Content options like Read More Text etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Show Sub Title', 'blog-designer-pack' ),
@@ -3598,6 +3670,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Cat Taxonomy, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -3761,6 +3837,10 @@ function bdp_masonry_lite_shortcode_fields( $shortcode = '' ) {
 															),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more pagination type like Load More, Infinite Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Previous Button Text', 'blog-designer-pack' ),
@@ -3995,6 +4075,10 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 												'desc' 			=> __( 'Enter an extra CSS class for design customization.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Extra class will be added at top most parent so using extra class you customize your design.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Ticker options like Position, Height etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),										
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Position Of Ticker', 'blog-designer-pack' ),
@@ -4097,6 +4181,10 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 										),
 										
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock to get more Ticker Effects like Fade, Typography, Continuous Scroll etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'text',
 											'heading' 		=> __( 'Continuous Scroll Speed', 'blog-designer-pack' ),
@@ -4227,6 +4315,10 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Give your Query a custom unique parameter to allow server side filtering.', 'blog-designer-pack' ) . '<label title="'.esc_attr__('Note: You can customize the plugin query via Hooks and Filters with the help of this parameter.', 'blog-designer-pack').'"> [?]</label>',
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock more Query options like Category Operator, Exclude By Category etc.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'dropdown',
 											'heading' 		=> __( 'Taxonomy', 'blog-designer-pack' ),
@@ -4365,6 +4457,10 @@ function bdp_ticker_lite_shortcode_fields( $shortcode = '' ) {
 											'desc' 			=> __( 'Set ticker text font color.', 'blog-designer-pack' ),
 										),
 										array(
+											'type'			=> 'info',
+											'heading'		=> __( 'Premium Features', 'blog-designer-pack' ),
+											'desc'			=> sprintf( __( '%s Unlock to get Ticker Control options.', 'blog-designer-pack' ), '<i class="dashicons dashicons-lock"></i>' ),
+										),
 										array(
 											'type' 			=> 'colorpicker',
 											'heading' 		=> __( 'Control Bg Color', 'blog-designer-pack' ),
